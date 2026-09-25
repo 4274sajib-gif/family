@@ -1,0 +1,3158 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1,
+               maximum-scale=1,
+               user-scalable=no">
+
+<meta name="theme-color" content="#0B6B4F">
+
+<title>Family Maintenance</title>
+
+<style>
+
+/* =====================================================
+   BASIC
+===================================================== */
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background:#f4f7f6;
+  color:#17211e;
+}
+
+body{
+  padding-bottom:82px;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+.app{
+  width:100%;
+  max-width:520px;
+  min-height:100vh;
+  margin:auto;
+  background:#f4f7f6;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+  padding:22px 18px 14px;
+}
+
+.header-title{
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:-.5px;
+}
+
+.header-subtitle{
+  margin-top:3px;
+  color:#7a8581;
+  font-size:13px;
+}
+
+
+/* =====================================================
+   TOTAL CARD
+===================================================== */
+
+.total-card{
+  margin:4px 16px 18px;
+  padding:20px;
+  border-radius:22px;
+
+  color:#fff;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0B6B4F,
+      #07553f
+    );
+
+  box-shadow:
+    0 12px 28px
+    rgba(11,107,79,.22);
+}
+
+.total-label{
+  font-size:12px;
+  opacity:.78;
+  letter-spacing:.5px;
+  font-weight:700;
+}
+
+.total-amount{
+  margin-top:6px;
+
+  font-size:31px;
+  line-height:1.1;
+
+  font-weight:850;
+  letter-spacing:-1px;
+}
+
+.total-count{
+  margin-top:8px;
+  font-size:12px;
+  opacity:.72;
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page{
+  display:none;
+  padding-bottom:20px;
+}
+
+.page.active{
+  display:block;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+  padding:0 16px;
+  margin-bottom:18px;
+}
+
+.section-title{
+  margin-bottom:9px;
+
+  font-size:14px;
+  font-weight:800;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.input-box{
+  width:100%;
+
+  border:1px solid #e0e7e4;
+
+  background:#fff;
+
+  border-radius:14px;
+
+  padding:13px 14px;
+
+  outline:none;
+
+  color:#17211e;
+}
+
+.input-box:focus{
+  border-color:#0B6B4F;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(11,107,79,.08);
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.category-grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:10px;
+}
+
+.category-card{
+  min-height:66px;
+
+  padding:10px;
+
+  border-radius:16px;
+
+  border:1.5px solid #e0e7e4;
+
+  background:#fff;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  flex-direction:column;
+
+  gap:4px;
+
+  transition:.18s;
+}
+
+.category-icon{
+  font-size:20px;
+}
+
+.category-name{
+  font-size:13px;
+  font-weight:750;
+}
+
+.category-card.selected{
+  border-color:#0B6B4F;
+
+  background:#eaf6f1;
+
+  color:#0B6B4F;
+
+  box-shadow:
+    0 5px 14px
+    rgba(11,107,79,.10);
+}
+
+
+/* =====================================================
+   PAYMENT
+===================================================== */
+
+.payment-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:8px;
+}
+
+.payment-card{
+  min-height:78px;
+
+  padding:8px 4px;
+
+  border-radius:15px;
+
+  border:1.5px solid #e0e7e4;
+
+  background:#fff;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:6px;
+
+  transition:.18s;
+}
+
+.payment-card.selected{
+  border-color:#0B6B4F;
+
+  background:#eaf6f1;
+
+  box-shadow:
+    0 5px 14px
+    rgba(11,107,79,.10);
+}
+
+
+/* =====================================================
+   PAYMENT BRAND ICON
+===================================================== */
+
+.payment-icon{
+  width:36px;
+  height:36px;
+
+  border-radius:10px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+}
+
+.payment-icon img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.payment-icon-text{
+  width:36px;
+  height:36px;
+
+  border-radius:10px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:12px;
+  font-weight:900;
+
+  color:#fff;
+}
+
+.bkash-placeholder{
+  background:#E2136E;
+}
+
+.nagad-placeholder{
+  background:#F7941D;
+}
+
+.bank-placeholder{
+  background:#0B6B4F;
+}
+
+.cash-placeholder{
+  background:#59656A;
+}
+
+.payment-name{
+  font-size:11px;
+  font-weight:750;
+}
+
+
+/* =====================================================
+   AMOUNT
+===================================================== */
+
+.amount-wrap{
+  position:relative;
+}
+
+.amount-input{
+  width:100%;
+
+  border:1.5px solid #dfe7e3;
+
+  background:#fff;
+
+  border-radius:16px;
+
+  padding:
+    15px
+    52px
+    15px
+    15px;
+
+  outline:none;
+
+  font-size:22px;
+
+  font-weight:800;
+}
+
+.amount-input:focus{
+  border-color:#0B6B4F;
+}
+
+.currency{
+  position:absolute;
+
+  right:16px;
+  top:50%;
+
+  transform:
+    translateY(-50%);
+
+  color:#7a8581;
+
+  font-size:13px;
+
+  font-weight:800;
+}
+
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.note-input{
+  width:100%;
+
+  min-height:82px;
+
+  resize:none;
+}
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+.save-btn{
+  width:
+    calc(100% - 32px);
+
+  margin:
+    2px 16px 22px;
+
+  min-height:54px;
+
+  border-radius:17px;
+
+  background:#0B6B4F;
+
+  color:#fff;
+
+  font-size:16px;
+
+  font-weight:800;
+
+  box-shadow:
+    0 10px 22px
+    rgba(11,107,79,.20);
+}
+
+.save-btn:active{
+  transform:scale(.98);
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+.filter-grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:9px;
+
+  margin-bottom:10px;
+}
+
+.filter-box{
+  width:100%;
+
+  border:1px solid #dfe7e3;
+
+  background:#fff;
+
+  border-radius:13px;
+
+  padding:11px 10px;
+
+  outline:none;
+
+  font-size:12px;
+
+  color:#17211e;
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.summary-grid{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr 1fr;
+
+  gap:7px;
+
+  margin-bottom:14px;
+}
+
+.summary-card{
+  background:#fff;
+
+  border:1px solid #e3e9e7;
+
+  border-radius:14px;
+
+  padding:11px 7px;
+
+  text-align:center;
+}
+
+.summary-label{
+  font-size:10px;
+
+  color:#7b8582;
+
+  font-weight:700;
+}
+
+.summary-value{
+  margin-top:4px;
+
+  font-size:13px;
+
+  font-weight:850;
+}
+
+
+/* =====================================================
+   TRANSACTION
+===================================================== */
+
+.transaction-list{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:9px;
+}
+
+.transaction-card{
+  background:#fff;
+
+  border:1px solid #e3e9e7;
+
+  border-radius:17px;
+
+  padding:13px;
+}
+
+.transaction-top{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:10px;
+}
+
+.transaction-left{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  min-width:0;
+}
+
+.transaction-payment-icon{
+  width:39px;
+  height:39px;
+
+  border-radius:12px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  flex:none;
+
+  overflow:hidden;
+}
+
+.transaction-payment-icon
+.payment-icon-text{
+  width:39px;
+  height:39px;
+}
+
+.transaction-info{
+  min-width:0;
+}
+
+.transaction-category{
+  font-size:13px;
+  font-weight:800;
+}
+
+.transaction-date{
+  margin-top:2px;
+
+  color:#8a9491;
+
+  font-size:10px;
+}
+
+.transaction-amount{
+  white-space:nowrap;
+
+  font-size:15px;
+
+  font-weight:850;
+
+  color:#0B6B4F;
+}
+
+.transaction-note{
+  margin-top:9px;
+
+  padding-top:8px;
+
+  border-top:
+    1px solid #eef1f0;
+
+  color:#66716d;
+
+  font-size:11px;
+
+  line-height:1.45;
+}
+
+.transaction-actions{
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:7px;
+
+  margin-top:10px;
+}
+
+.action-btn{
+  padding:7px 12px;
+
+  border-radius:10px;
+
+  font-size:11px;
+
+  font-weight:750;
+}
+
+.edit-btn{
+  background:#edf5f2;
+  color:#0B6B4F;
+}
+
+.delete-btn{
+  background:#fff0f0;
+  color:#d74747;
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty{
+  padding:35px 15px;
+
+  text-align:center;
+
+  color:#8a9491;
+
+  font-size:13px;
+
+  background:#fff;
+
+  border-radius:17px;
+
+  border:1px dashed #dce5e1;
+}
+
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav{
+  position:fixed;
+
+  z-index:50;
+
+  bottom:0;
+
+  left:50%;
+
+  transform:
+    translateX(-50%);
+
+  width:100%;
+
+  max-width:520px;
+
+  height:70px;
+
+  padding:
+    7px 18px 9px;
+
+  background:
+    rgba(255,255,255,.96);
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+
+  border-top:
+    1px solid #e3e9e7;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:10px;
+}
+
+.nav-btn{
+  border-radius:15px;
+
+  background:transparent;
+
+  color:#8a9491;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:3px;
+
+  font-size:10px;
+
+  font-weight:750;
+}
+
+.nav-icon{
+  font-size:20px;
+  line-height:1;
+}
+
+.nav-btn.active{
+  color:#0B6B4F;
+
+  background:#edf7f3;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal-bg{
+  position:fixed;
+
+  z-index:100;
+
+  inset:0;
+
+  background:
+    rgba(0,0,0,.38);
+
+  display:none;
+
+  align-items:flex-end;
+
+  justify-content:center;
+}
+
+.modal-bg.show{
+  display:flex;
+}
+
+.modal{
+  width:100%;
+
+  max-width:520px;
+
+  background:#fff;
+
+  border-radius:
+    24px 24px 0 0;
+
+  padding:
+    20px 16px 26px;
+
+  max-height:90vh;
+
+  overflow:auto;
+}
+
+.modal-title{
+  font-size:18px;
+
+  font-weight:850;
+
+  margin-bottom:15px;
+}
+
+.modal-actions{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:9px;
+
+  margin-top:15px;
+}
+
+.modal-cancel{
+  background:#edf1ef;
+
+  color:#53605b;
+}
+
+.modal-save{
+  background:#0B6B4F;
+
+  color:#fff;
+}
+
+.modal-btn{
+  min-height:48px;
+
+  border-radius:14px;
+
+  font-weight:800;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+  position:fixed;
+
+  z-index:200;
+
+  left:50%;
+
+  bottom:84px;
+
+  transform:
+    translateX(-50%)
+    translateY(15px);
+
+  background:#17211e;
+
+  color:#fff;
+
+  padding:
+    10px 16px;
+
+  border-radius:12px;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  opacity:0;
+
+  pointer-events:none;
+
+  transition:.25s;
+}
+
+.toast.show{
+  opacity:1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:360px){
+
+  .payment-grid{
+    gap:5px;
+  }
+
+  .payment-card{
+    min-height:72px;
+  }
+
+  .payment-name{
+    font-size:10px;
+  }
+
+  .total-amount{
+    font-size:27px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<section
+  id="homePage"
+  class="page active"
+>
+
+  <header class="header">
+
+    <div class="header-title">
+      Family Maintenance
+    </div>
+
+    <div class="header-subtitle">
+      পরিবারের খরচের হিসাব
+    </div>
+
+  </header>
+
+
+  <!-- TOTAL -->
+
+  <div class="total-card">
+
+    <div class="total-label">
+      TOTAL EXPENSE
+    </div>
+
+    <div
+      id="totalExpense"
+      class="total-amount"
+    >
+      0 TK
+    </div>
+
+    <div
+      id="totalCount"
+      class="total-count"
+    >
+      0 Transactions
+    </div>
+
+  </div>
+
+
+  <!-- DATE -->
+
+  <div class="section">
+
+    <div class="section-title">
+      তারিখ
+    </div>
+
+    <input
+      id="expenseDate"
+      class="input-box"
+      type="date"
+    >
+
+  </div>
+
+
+  <!-- CATEGORY -->
+
+  <div class="section">
+
+    <div class="section-title">
+      Main Category
+    </div>
+
+    <div class="category-grid">
+
+      <button
+        type="button"
+        class="category-card selected"
+        data-category="Family"
+      >
+
+        <div class="category-icon">
+          👨‍👩‍👧
+        </div>
+
+        <div class="category-name">
+          Family
+        </div>
+
+      </button>
+
+
+      <button
+        type="button"
+        class="category-card"
+        data-category="Wife"
+      >
+
+        <div class="category-icon">
+          👩
+        </div>
+
+        <div class="category-name">
+          Wife
+        </div>
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- PAYMENT -->
+
+  <div class="section">
+
+    <div class="section-title">
+      Payment Method
+    </div>
+
+    <div class="payment-grid">
+
+
+      <!-- BKASH -->
+
+      <button
+        type="button"
+        class="payment-card selected"
+        data-payment="বিকাশ"
+      >
+
+        <div class="payment-icon">
+
+          <div
+            class="payment-icon-text bkash-placeholder"
+          >
+            bK
+          </div>
+
+        </div>
+
+        <div class="payment-name">
+          বিকাশ
+        </div>
+
+      </button>
+
+
+      <!-- NAGAD -->
+
+      <button
+        type="button"
+        class="payment-card"
+        data-payment="নগদ"
+      >
+
+        <div class="payment-icon">
+
+          <div
+            class="payment-icon-text nagad-placeholder"
+          >
+            N
+          </div>
+
+        </div>
+
+        <div class="payment-name">
+          নগদ
+        </div>
+
+      </button>
+
+
+      <!-- BANK -->
+
+      <button
+        type="button"
+        class="payment-card"
+        data-payment="ব্যাংক"
+      >
+
+        <div class="payment-icon">
+
+          <div
+            class="payment-icon-text bank-placeholder"
+          >
+            BANK
+          </div>
+
+        </div>
+
+        <div class="payment-name">
+          ব্যাংক
+        </div>
+
+      </button>
+
+
+      <!-- CASH -->
+
+      <button
+        type="button"
+        class="payment-card"
+        data-payment="ক্যাশ"
+      >
+
+        <div class="payment-icon">
+
+          <div
+            class="payment-icon-text cash-placeholder"
+          >
+            ৳
+          </div>
+
+        </div>
+
+        <div class="payment-name">
+          ক্যাশ
+        </div>
+
+      </button>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- AMOUNT -->
+
+  <div class="section">
+
+    <div class="section-title">
+      Amount
+    </div>
+
+    <div class="amount-wrap">
+
+      <input
+        id="expenseAmount"
+        class="amount-input"
+        type="number"
+        inputmode="numeric"
+        min="0"
+        step="1"
+        placeholder="0"
+      >
+
+      <span class="currency">
+        TK
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- NOTE -->
+
+  <div class="section">
+
+    <div class="section-title">
+      Note
+    </div>
+
+    <textarea
+      id="expenseNote"
+      class="input-box note-input"
+      placeholder="খরচের বিস্তারিত লিখুন..."
+    ></textarea>
+
+  </div>
+
+
+  <!-- SAVE -->
+
+  <button
+    id="saveBtn"
+    class="save-btn"
+    type="button"
+  >
+    SAVE EXPENSE
+  </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRANSACTIONS
+===================================================== -->
+
+<section
+  id="transactionsPage"
+  class="page"
+>
+
+  <header class="header">
+
+    <div class="header-title">
+      Transactions
+    </div>
+
+    <div class="header-subtitle">
+      সব খরচের হিসাব
+    </div>
+
+  </header>
+
+
+  <div class="section">
+
+
+    <!-- FILTER -->
+
+    <div class="filter-grid">
+
+      <select
+        id="monthFilter"
+        class="filter-box"
+      >
+
+        <option value="all">
+          সব Month
+        </option>
+
+      </select>
+
+
+      <select
+        id="categoryFilter"
+        class="filter-box"
+      >
+
+        <option value="all">
+          সব Category
+        </option>
+
+        <option value="Family">
+          Family
+        </option>
+
+        <option value="Wife">
+          Wife
+        </option>
+
+      </select>
+
+
+      <select
+        id="paymentFilter"
+        class="filter-box"
+      >
+
+        <option value="all">
+          সব Payment
+        </option>
+
+        <option value="বিকাশ">
+          বিকাশ
+        </option>
+
+        <option value="নগদ">
+          নগদ
+        </option>
+
+        <option value="ব্যাংক">
+          ব্যাংক
+        </option>
+
+        <option value="ক্যাশ">
+          ক্যাশ
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="summary-grid">
+
+
+      <div class="summary-card">
+
+        <div class="summary-label">
+          FAMILY
+        </div>
+
+        <div
+          id="familyTotal"
+          class="summary-value"
+        >
+          0 TK
+        </div>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <div class="summary-label">
+          WIFE
+        </div>
+
+        <div
+          id="wifeTotal"
+          class="summary-value"
+        >
+          0 TK
+        </div>
+
+      </div>
+
+
+      <div class="summary-card">
+
+        <div class="summary-label">
+          TOTAL
+        </div>
+
+        <div
+          id="filteredTotal"
+          class="summary-value"
+        >
+          0 TK
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- LIST -->
+
+    <div
+      id="transactionList"
+      class="transaction-list"
+    ></div>
+
+  </div>
+
+</section>
+
+</div>
+
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-nav">
+
+
+  <button
+    id="homeNav"
+    class="nav-btn active"
+    type="button"
+  >
+
+    <div class="nav-icon">
+      🏠
+    </div>
+
+    <div>
+      Home
+    </div>
+
+  </button>
+
+
+  <button
+    id="transactionsNav"
+    class="nav-btn"
+    type="button"
+  >
+
+    <div class="nav-icon">
+      📋
+    </div>
+
+    <div>
+      Transactions
+    </div>
+
+  </button>
+
+
+</nav>
+
+
+
+<!-- =====================================================
+     EDIT MODAL
+===================================================== -->
+
+<div
+  id="editModal"
+  class="modal-bg"
+>
+
+  <div class="modal">
+
+
+    <div class="modal-title">
+      Edit Transaction
+    </div>
+
+
+    <input
+      id="editId"
+      type="hidden"
+    >
+
+
+    <div
+      class="section"
+      style="
+        padding:0;
+        margin-bottom:12px;
+      "
+    >
+
+      <div class="section-title">
+        তারিখ
+      </div>
+
+      <input
+        id="editDate"
+        class="input-box"
+        type="date"
+      >
+
+    </div>
+
+
+    <div
+      class="section"
+      style="
+        padding:0;
+        margin-bottom:12px;
+      "
+    >
+
+      <div class="section-title">
+        Category
+      </div>
+
+      <select
+        id="editCategory"
+        class="input-box"
+      >
+
+        <option value="Family">
+          Family
+        </option>
+
+        <option value="Wife">
+          Wife
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div
+      class="section"
+      style="
+        padding:0;
+        margin-bottom:12px;
+      "
+    >
+
+      <div class="section-title">
+        Payment
+      </div>
+
+      <select
+        id="editPayment"
+        class="input-box"
+      >
+
+        <option value="বিকাশ">
+          বিকাশ
+        </option>
+
+        <option value="নগদ">
+          নগদ
+        </option>
+
+        <option value="ব্যাংক">
+          ব্যাংক
+        </option>
+
+        <option value="ক্যাশ">
+          ক্যাশ
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div
+      class="section"
+      style="
+        padding:0;
+        margin-bottom:12px;
+      "
+    >
+
+      <div class="section-title">
+        Amount
+      </div>
+
+      <div class="amount-wrap">
+
+        <input
+          id="editAmount"
+          class="amount-input"
+          type="number"
+          inputmode="numeric"
+          min="0"
+          step="1"
+        >
+
+        <span class="currency">
+          TK
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="section"
+      style="
+        padding:0;
+        margin-bottom:0;
+      "
+    >
+
+      <div class="section-title">
+        Note
+      </div>
+
+      <textarea
+        id="editNote"
+        class="input-box note-input"
+      ></textarea>
+
+    </div>
+
+
+    <div class="modal-actions">
+
+      <button
+        id="cancelEdit"
+        class="modal-btn modal-cancel"
+        type="button"
+      >
+        Cancel
+      </button>
+
+
+      <button
+        id="saveEdit"
+        class="modal-btn modal-save"
+        type="button"
+      >
+        Save Changes
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
+
+<script>
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+const STORAGE_KEY =
+  "familyMaintenance_transactions_v2";
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let transactions = [];
+
+let selectedCategory =
+  "Family";
+
+let selectedPayment =
+  "বিকাশ";
+
+
+/* =====================================================
+   DOM
+===================================================== */
+
+const homePage =
+  document.getElementById(
+    "homePage"
+  );
+
+const transactionsPage =
+  document.getElementById(
+    "transactionsPage"
+  );
+
+const homeNav =
+  document.getElementById(
+    "homeNav"
+  );
+
+const transactionsNav =
+  document.getElementById(
+    "transactionsNav"
+  );
+
+const expenseDate =
+  document.getElementById(
+    "expenseDate"
+  );
+
+const expenseAmount =
+  document.getElementById(
+    "expenseAmount"
+  );
+
+const expenseNote =
+  document.getElementById(
+    "expenseNote"
+  );
+
+const saveBtn =
+  document.getElementById(
+    "saveBtn"
+  );
+
+const totalExpense =
+  document.getElementById(
+    "totalExpense"
+  );
+
+const totalCount =
+  document.getElementById(
+    "totalCount"
+  );
+
+const transactionList =
+  document.getElementById(
+    "transactionList"
+  );
+
+const monthFilter =
+  document.getElementById(
+    "monthFilter"
+  );
+
+const categoryFilter =
+  document.getElementById(
+    "categoryFilter"
+  );
+
+const paymentFilter =
+  document.getElementById(
+    "paymentFilter"
+  );
+
+const familyTotal =
+  document.getElementById(
+    "familyTotal"
+  );
+
+const wifeTotal =
+  document.getElementById(
+    "wifeTotal"
+  );
+
+const filteredTotal =
+  document.getElementById(
+    "filteredTotal"
+  );
+
+const editModal =
+  document.getElementById(
+    "editModal"
+  );
+
+const editId =
+  document.getElementById(
+    "editId"
+  );
+
+const editDate =
+  document.getElementById(
+    "editDate"
+  );
+
+const editCategory =
+  document.getElementById(
+    "editCategory"
+  );
+
+const editPayment =
+  document.getElementById(
+    "editPayment"
+  );
+
+const editAmount =
+  document.getElementById(
+    "editAmount"
+  );
+
+const editNote =
+  document.getElementById(
+    "editNote"
+  );
+
+const cancelEdit =
+  document.getElementById(
+    "cancelEdit"
+  );
+
+const saveEdit =
+  document.getElementById(
+    "saveEdit"
+  );
+
+const toast =
+  document.getElementById(
+    "toast"
+  );
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  init
+);
+
+
+function init(){
+
+  loadTransactions();
+
+  setToday();
+
+  setupCategoryButtons();
+
+  setupPaymentButtons();
+
+  setupNavigation();
+
+  setupFilters();
+
+  refreshUI();
+
+}
+
+
+/* =====================================================
+   TODAY
+===================================================== */
+
+function setToday(){
+
+  const today =
+    new Date()
+      .toISOString()
+      .split("T")[0];
+
+  expenseDate.value =
+    today;
+
+}
+
+
+/* =====================================================
+   LOAD
+===================================================== */
+
+function loadTransactions(){
+
+  try{
+
+    const saved =
+      localStorage.getItem(
+        STORAGE_KEY
+      );
+
+    if(saved){
+
+      const data =
+        JSON.parse(saved);
+
+      if(
+        Array.isArray(data)
+      ){
+
+        transactions =
+          data;
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Storage load error:",
+      error
+    );
+
+    transactions = [];
+
+  }
+
+}
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+function saveTransactions(){
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(
+      transactions
+    )
+  );
+
+}
+
+
+/* =====================================================
+   ID
+===================================================== */
+
+function createTransactionId(){
+
+  const now =
+    new Date();
+
+  const timestamp =
+    now.getTime();
+
+  const random =
+    Math.random()
+      .toString(36)
+      .substring(2,8)
+      .toUpperCase();
+
+  return (
+    "TXN-" +
+    timestamp +
+    "-" +
+    random
+  );
+
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+function setupCategoryButtons(){
+
+  document
+    .querySelectorAll(
+      ".category-card"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          document
+            .querySelectorAll(
+              ".category-card"
+            )
+            .forEach(item => {
+
+              item.classList.remove(
+                "selected"
+              );
+
+            });
+
+          button.classList.add(
+            "selected"
+          );
+
+          selectedCategory =
+            button.dataset.category;
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =====================================================
+   PAYMENT
+===================================================== */
+
+function setupPaymentButtons(){
+
+  document
+    .querySelectorAll(
+      ".payment-card"
+    )
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          document
+            .querySelectorAll(
+              ".payment-card"
+            )
+            .forEach(item => {
+
+              item.classList.remove(
+                "selected"
+              );
+
+            });
+
+          button.classList.add(
+            "selected"
+          );
+
+          selectedPayment =
+            button.dataset.payment;
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =====================================================
+   SAVE EXPENSE
+===================================================== */
+
+saveBtn.addEventListener(
+  "click",
+  saveExpense
+);
+
+
+function saveExpense(){
+
+  const date =
+    expenseDate.value;
+
+  const amount =
+    parseInt(
+      expenseAmount.value,
+      10
+    );
+
+  const note =
+    expenseNote.value.trim();
+
+
+  if(!date){
+
+    showToast(
+      "তারিখ নির্বাচন করুন"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    !amount ||
+    amount <= 0
+  ){
+
+    showToast(
+      "সঠিক Amount দিন"
+    );
+
+    expenseAmount.focus();
+
+    return;
+
+  }
+
+
+  const transaction = {
+
+    id:
+      createTransactionId(),
+
+    date:
+      date,
+
+    category:
+      selectedCategory,
+
+    payment:
+      selectedPayment,
+
+    amount:
+      amount,
+
+    note:
+      note,
+
+    createdAt:
+      new Date().toISOString(),
+
+    updatedAt:
+      new Date().toISOString()
+
+  };
+
+
+  transactions.unshift(
+    transaction
+  );
+
+
+  saveTransactions();
+
+
+  expenseAmount.value =
+    "";
+
+  expenseNote.value =
+    "";
+
+
+  setToday();
+
+  refreshUI();
+
+
+  showToast(
+    "Expense Saved ✓"
+  );
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function setupNavigation(){
+
+  homeNav.addEventListener(
+    "click",
+    () => {
+
+      showPage(
+        "home"
+      );
+
+    }
+  );
+
+
+  transactionsNav.addEventListener(
+    "click",
+    () => {
+
+      showPage(
+        "transactions"
+      );
+
+    }
+  );
+
+}
+
+
+function showPage(page){
+
+  if(
+    page === "home"
+  ){
+
+    homePage.classList.add(
+      "active"
+    );
+
+    transactionsPage.classList.remove(
+      "active"
+    );
+
+    homeNav.classList.add(
+      "active"
+    );
+
+    transactionsNav.classList.remove(
+      "active"
+    );
+
+  }
+
+  else{
+
+    homePage.classList.remove(
+      "active"
+    );
+
+    transactionsPage.classList.add(
+      "active"
+    );
+
+    homeNav.classList.remove(
+      "active"
+    );
+
+    transactionsNav.classList.add(
+      "active"
+    );
+
+    populateMonthFilter();
+
+    renderTransactions();
+
+  }
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function setupFilters(){
+
+  monthFilter.addEventListener(
+    "change",
+    renderTransactions
+  );
+
+  categoryFilter.addEventListener(
+    "change",
+    renderTransactions
+  );
+
+  paymentFilter.addEventListener(
+    "change",
+    renderTransactions
+  );
+
+}
+
+
+/* =====================================================
+   MONTH FILTER
+===================================================== */
+
+function populateMonthFilter(){
+
+  const oldValue =
+    monthFilter.value;
+
+
+  const months =
+    [
+      ...new Set(
+        transactions.map(
+          transaction =>
+            transaction.date
+              .substring(0,7)
+        )
+      )
+    ]
+    .sort()
+    .reverse();
+
+
+  monthFilter.innerHTML =
+    `
+      <option value="all">
+        সব Month
+      </option>
+    `;
+
+
+  months.forEach(
+    month => {
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+      option.value =
+        month;
+
+      option.textContent =
+        formatMonth(
+          month
+        );
+
+      monthFilter.appendChild(
+        option
+      );
+
+    }
+  );
+
+
+  if(
+    months.includes(
+      oldValue
+    )
+  ){
+
+    monthFilter.value =
+      oldValue;
+
+  }
+
+  else{
+
+    monthFilter.value =
+      "all";
+
+  }
+
+}
+
+
+/* =====================================================
+   MONTH FORMAT
+===================================================== */
+
+function formatMonth(month){
+
+  const parts =
+    month.split("-");
+
+  const year =
+    Number(parts[0]);
+
+  const monthNumber =
+    Number(parts[1]);
+
+  const date =
+    new Date(
+      year,
+      monthNumber - 1,
+      1
+    );
+
+
+  return date.toLocaleDateString(
+    "en-US",
+    {
+      month:"long",
+      year:"numeric"
+    }
+  );
+
+}
+
+
+/* =====================================================
+   FILTER DATA
+===================================================== */
+
+function getFilteredTransactions(){
+
+  const month =
+    monthFilter.value;
+
+  const category =
+    categoryFilter.value;
+
+  const payment =
+    paymentFilter.value;
+
+
+  return transactions.filter(
+    transaction => {
+
+      const monthMatch =
+        month === "all" ||
+        transaction.date
+          .startsWith(month);
+
+
+      const categoryMatch =
+        category === "all" ||
+        transaction.category ===
+          category;
+
+
+      const paymentMatch =
+        payment === "all" ||
+        transaction.payment ===
+          payment;
+
+
+      return (
+        monthMatch &&
+        categoryMatch &&
+        paymentMatch
+      );
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderTransactions(){
+
+  const filtered =
+    getFilteredTransactions();
+
+
+  updateSummary(
+    filtered
+  );
+
+
+  if(
+    !filtered.length
+  ){
+
+    transactionList.innerHTML =
+      `
+        <div class="empty">
+          কোনো Transaction পাওয়া যায়নি
+        </div>
+      `;
+
+    return;
+
+  }
+
+
+  transactionList.innerHTML =
+    filtered
+      .map(
+        transaction =>
+          transactionHTML(
+            transaction
+          )
+      )
+      .join("");
+
+}
+
+
+/* =====================================================
+   PAYMENT DISPLAY
+===================================================== */
+
+function paymentDisplay(
+  payment
+){
+
+  if(
+    payment === "বিকাশ"
+  ){
+
+    return `
+      <div
+        class="
+          payment-icon-text
+          bkash-placeholder
+        "
+      >
+        bK
+      </div>
+    `;
+
+  }
+
+
+  if(
+    payment === "নগদ"
+  ){
+
+    return `
+      <div
+        class="
+          payment-icon-text
+          nagad-placeholder
+        "
+      >
+        N
+      </div>
+    `;
+
+  }
+
+
+  if(
+    payment === "ব্যাংক"
+  ){
+
+    return `
+      <div
+        class="
+          payment-icon-text
+          bank-placeholder
+        "
+      >
+        BANK
+      </div>
+    `;
+
+  }
+
+
+  return `
+    <div
+      class="
+        payment-icon-text
+        cash-placeholder
+      "
+    >
+      ৳
+    </div>
+  `;
+
+}
+
+
+/* =====================================================
+   TRANSACTION HTML
+===================================================== */
+
+function transactionHTML(
+  transaction
+){
+
+  return `
+
+    <div
+      class="transaction-card"
+    >
+
+      <div
+        class="transaction-top"
+      >
+
+        <div
+          class="transaction-left"
+        >
+
+          <div
+            class="
+              transaction-payment-icon
+            "
+          >
+
+            ${paymentDisplay(
+              transaction.payment
+            )}
+
+          </div>
+
+
+          <div
+            class="transaction-info"
+          >
+
+            <div
+              class="transaction-category"
+            >
+
+              ${escapeHTML(
+                transaction.category
+              )}
+
+              ·
+
+              ${escapeHTML(
+                transaction.payment
+              )}
+
+            </div>
+
+
+            <div
+              class="transaction-date"
+            >
+
+              ${formatDate(
+                transaction.date
+              )}
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="transaction-amount"
+        >
+
+          ${formatAmount(
+            transaction.amount
+          )}
+
+          TK
+
+        </div>
+
+      </div>
+
+
+      ${
+        transaction.note
+          ?
+          `
+            <div
+              class="transaction-note"
+            >
+              ${escapeHTML(
+                transaction.note
+              )}
+            </div>
+          `
+          :
+          ""
+      }
+
+
+      <div
+        class="transaction-actions"
+      >
+
+        <button
+          class="
+            action-btn
+            edit-btn
+          "
+          type="button"
+          onclick="
+            openEdit(
+              '${transaction.id}'
+            )
+          "
+        >
+          Edit
+        </button>
+
+
+        <button
+          class="
+            action-btn
+            delete-btn
+          "
+          type="button"
+          onclick="
+            deleteTransaction(
+              '${transaction.id}'
+            )
+          "
+        >
+          Delete
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+function updateSummary(
+  list
+){
+
+  let family = 0;
+
+  let wife = 0;
+
+  let total = 0;
+
+
+  list.forEach(
+    transaction => {
+
+      const amount =
+        Number(
+          transaction.amount
+        ) || 0;
+
+
+      total +=
+        amount;
+
+
+      if(
+        transaction.category ===
+        "Family"
+      ){
+
+        family +=
+          amount;
+
+      }
+
+
+      if(
+        transaction.category ===
+        "Wife"
+      ){
+
+        wife +=
+          amount;
+
+      }
+
+    }
+  );
+
+
+  familyTotal.textContent =
+    formatAmount(
+      family
+    ) + " TK";
+
+
+  wifeTotal.textContent =
+    formatAmount(
+      wife
+    ) + " TK";
+
+
+  filteredTotal.textContent =
+    formatAmount(
+      total
+    ) + " TK";
+
+}
+
+
+/* =====================================================
+   GLOBAL TOTAL
+===================================================== */
+
+function updateGlobalTotal(){
+
+  const total =
+    transactions.reduce(
+      (
+        sum,
+        transaction
+      ) =>
+        sum +
+        (
+          Number(
+            transaction.amount
+          ) || 0
+        ),
+      0
+    );
+
+
+  totalExpense.textContent =
+    formatAmount(
+      total
+    ) + " TK";
+
+
+  totalCount.textContent =
+    transactions.length +
+    (
+      transactions.length === 1
+        ?
+          " Transaction"
+        :
+          " Transactions"
+    );
+
+}
+
+
+/* =====================================================
+   EDIT
+===================================================== */
+
+function openEdit(id){
+
+  const transaction =
+    transactions.find(
+      item =>
+        item.id === id
+    );
+
+
+  if(!transaction){
+    return;
+  }
+
+
+  editId.value =
+    transaction.id;
+
+  editDate.value =
+    transaction.date;
+
+  editCategory.value =
+    transaction.category;
+
+  editPayment.value =
+    transaction.payment;
+
+  editAmount.value =
+    transaction.amount;
+
+  editNote.value =
+    transaction.note || "";
+
+
+  editModal.classList.add(
+    "show"
+  );
+
+}
+
+
+window.openEdit =
+  openEdit;
+
+
+/* =====================================================
+   CANCEL EDIT
+===================================================== */
+
+cancelEdit.addEventListener(
+  "click",
+  () => {
+
+    editModal.classList.remove(
+      "show"
+    );
+
+  }
+);
+
+
+/* =====================================================
+   SAVE EDIT
+===================================================== */
+
+saveEdit.addEventListener(
+  "click",
+  () => {
+
+    const id =
+      editId.value;
+
+
+    const index =
+      transactions.findIndex(
+        item =>
+          item.id === id
+      );
+
+
+    if(
+      index === -1
+    ){
+
+      return;
+
+    }
+
+
+    const amount =
+      parseInt(
+        editAmount.value,
+        10
+      );
+
+
+    if(
+      !editDate.value ||
+      !amount ||
+      amount <= 0
+    ){
+
+      showToast(
+        "সঠিক তথ্য দিন"
+      );
+
+      return;
+
+    }
+
+
+    transactions[index] = {
+
+      ...transactions[index],
+
+      date:
+        editDate.value,
+
+      category:
+        editCategory.value,
+
+      payment:
+        editPayment.value,
+
+      amount:
+        amount,
+
+      note:
+        editNote.value.trim(),
+
+      updatedAt:
+        new Date().toISOString()
+
+    };
+
+
+    saveTransactions();
+
+
+    editModal.classList.remove(
+      "show"
+    );
+
+
+    refreshUI();
+
+
+    showToast(
+      "Transaction Updated ✓"
+    );
+
+  }
+);
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+function deleteTransaction(
+  id
+){
+
+  const transaction =
+    transactions.find(
+      item =>
+        item.id === id
+    );
+
+
+  if(!transaction){
+    return;
+  }
+
+
+  const confirmed =
+    confirm(
+      "এই Transaction টি Delete করতে চান?"
+    );
+
+
+  if(!confirmed){
+    return;
+  }
+
+
+  transactions =
+    transactions.filter(
+      item =>
+        item.id !== id
+    );
+
+
+  saveTransactions();
+
+
+  refreshUI();
+
+
+  showToast(
+    "Transaction Deleted"
+  );
+
+}
+
+
+window.deleteTransaction =
+  deleteTransaction;
+
+
+/* =====================================================
+   REFRESH
+===================================================== */
+
+function refreshUI(){
+
+  updateGlobalTotal();
+
+  populateMonthFilter();
+
+  renderTransactions();
+
+}
+
+
+/* =====================================================
+   BANGLA / INDIAN NUMBER FORMAT
+===================================================== */
+
+function formatAmount(
+  value
+){
+
+  return Number(
+    value || 0
+  )
+  .toLocaleString(
+    "en-IN",
+    {
+      maximumFractionDigits:0
+    }
+  );
+
+}
+
+
+/* =====================================================
+   DATE FORMAT
+===================================================== */
+
+function formatDate(
+  date
+){
+
+  if(!date){
+    return "";
+  }
+
+
+  const parts =
+    date.split("-");
+
+
+  return (
+    parts[2] +
+    "/" +
+    parts[1] +
+    "/" +
+    parts[0]
+  );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(
+  value
+){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function showToast(
+  message
+){
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toast.textContent =
+    message;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  toastTimer =
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      1800
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+editModal.addEventListener(
+  "click",
+  event => {
+
+    if(
+      event.target ===
+      editModal
+    ){
+
+      editModal.classList.remove(
+        "show"
+      );
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
