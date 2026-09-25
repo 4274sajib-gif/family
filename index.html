@@ -42,7 +42,7 @@ body{
 }
 
 body{
-  padding-bottom:82px;
+  padding-bottom:78px;
 }
 
 button,
@@ -76,67 +76,499 @@ button{
 ===================================================== */
 
 .header{
-  padding:22px 18px 14px;
+  padding:20px 17px 13px;
 }
 
 .header-title{
-  font-size:24px;
-  font-weight:800;
-  letter-spacing:-.5px;
+  font-size:23px;
+  font-weight:850;
+  letter-spacing:-.6px;
 }
 
 .header-subtitle{
   margin-top:3px;
   color:#7a8581;
-  font-size:13px;
+  font-size:12px;
 }
 
 
 /* =====================================================
-   TOTAL CARD
+   REALISTIC ATM / BANK CARD
 ===================================================== */
 
+.total-card-wrap{
+  padding:0 15px 20px;
+}
+
 .total-card{
-  margin:4px 16px 18px;
-  padding:20px;
-  border-radius:22px;
+  position:relative;
+
+  width:100%;
+
+  aspect-ratio:1.586 / 1;
+
+  min-height:205px;
+
+  padding:20px 21px;
+
+  border-radius:20px;
+
+  overflow:hidden;
 
   color:#fff;
 
   background:
     linear-gradient(
-      145deg,
-      #0B6B4F,
-      #07553f
+      135deg,
+      #0d7658 0%,
+      #0B6B4F 38%,
+      #07553f 72%,
+      #043d2e 100%
     );
 
+  border:
+    1px solid
+    rgba(255,255,255,.20);
+
   box-shadow:
-    0 12px 28px
-    rgba(11,107,79,.22);
+    0 18px 35px
+    rgba(0,45,32,.28),
+
+    0 5px 10px
+    rgba(0,0,0,.10);
+
+  isolation:isolate;
 }
+
+
+/* -----------------------------------------------
+   CARD LIGHT / SECURITY EFFECT
+------------------------------------------------ */
+
+.total-card::before{
+  content:"";
+
+  position:absolute;
+
+  inset:-30%;
+
+  z-index:-1;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255,255,255,.20),
+      transparent 25%
+    ),
+
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(0,0,0,.18),
+      transparent 35%
+    );
+
+  transform:rotate(-8deg);
+}
+
+
+/* -----------------------------------------------
+   DIAGONAL SECURITY LINES
+------------------------------------------------ */
+
+.total-card::after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:-1;
+
+  opacity:.16;
+
+  background:
+    repeating-linear-gradient(
+      125deg,
+      transparent 0px,
+      transparent 12px,
+      rgba(255,255,255,.16) 13px,
+      transparent 14px
+    );
+}
+
+
+/* -----------------------------------------------
+   CARD TOP
+------------------------------------------------ */
+
+.card-top{
+  position:relative;
+
+  z-index:5;
+
+  display:flex;
+
+  align-items:flex-start;
+
+  justify-content:space-between;
+}
+
+
+/* -----------------------------------------------
+   CARD BRAND
+------------------------------------------------ */
+
+.card-brand{
+  font-size:11px;
+
+  font-weight:900;
+
+  letter-spacing:1.8px;
+
+  color:
+    rgba(255,255,255,.92);
+
+  text-shadow:
+    0 1px 2px
+    rgba(0,0,0,.25);
+}
+
+
+/* -----------------------------------------------
+   CONTACTLESS SYMBOL
+------------------------------------------------ */
+
+.card-contactless{
+  position:absolute;
+
+  right:60px;
+
+  top:1px;
+
+  font-size:18px;
+
+  line-height:1;
+
+  opacity:.82;
+
+  transform:rotate(90deg);
+}
+
+
+/* -----------------------------------------------
+   EMV CHIP
+------------------------------------------------ */
+
+.card-chip{
+  width:43px;
+  height:33px;
+
+  border-radius:8px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f1e5b9,
+      #c6b579 45%,
+      #e7d79e 70%,
+      #aa975e
+    );
+
+  border:
+    1px solid
+    rgba(90,70,25,.35);
+
+  box-shadow:
+    inset 0 1px 1px
+    rgba(255,255,255,.65),
+
+    0 2px 4px
+    rgba(0,0,0,.20);
+}
+
+
+/* chip vertical lines */
+
+.card-chip::before{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      transparent 31%,
+      rgba(85,70,35,.38) 32%,
+      rgba(85,70,35,.38) 34%,
+      transparent 35%,
+      transparent 65%,
+      rgba(85,70,35,.38) 66%,
+      rgba(85,70,35,.38) 68%,
+      transparent 69%
+    ),
+
+    linear-gradient(
+      0deg,
+      transparent 47%,
+      rgba(85,70,35,.38) 48%,
+      rgba(85,70,35,.38) 52%,
+      transparent 53%
+    );
+}
+
+
+/* chip center */
+
+.card-chip::after{
+  content:"";
+
+  position:absolute;
+
+  width:14px;
+  height:14px;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  border:
+    1px solid
+    rgba(85,70,35,.45);
+
+  border-radius:4px;
+}
+
+
+/* -----------------------------------------------
+   CARD MAIN
+------------------------------------------------ */
+
+.card-middle{
+  position:relative;
+
+  z-index:5;
+
+  margin-top:17px;
+}
+
+
+/* -----------------------------------------------
+   TOTAL LABEL
+------------------------------------------------ */
 
 .total-label{
-  font-size:12px;
-  opacity:.78;
-  letter-spacing:.5px;
-  font-weight:700;
+  font-size:9px;
+
+  letter-spacing:1.4px;
+
+  font-weight:800;
+
+  opacity:.65;
+
+  text-transform:uppercase;
 }
+
+
+/* -----------------------------------------------
+   TOTAL AMOUNT
+------------------------------------------------ */
 
 .total-amount{
-  margin-top:6px;
+  margin-top:3px;
 
-  font-size:31px;
-  line-height:1.1;
+  font-size:29px;
 
-  font-weight:850;
-  letter-spacing:-1px;
+  line-height:1.05;
+
+  font-weight:900;
+
+  letter-spacing:-.8px;
+
+  text-shadow:
+    0 2px 4px
+    rgba(0,0,0,.22);
 }
 
-.total-count{
-  margin-top:8px;
-  font-size:12px;
-  opacity:.72;
+
+/* -----------------------------------------------
+   CARD NUMBER
+------------------------------------------------ */
+
+.card-number{
+  margin-top:11px;
+
+  font-size:14px;
+
+  letter-spacing:3px;
+
+  font-weight:650;
+
+  color:
+    rgba(255,255,255,.78);
+
+  text-shadow:
+    0 1px 2px
+    rgba(0,0,0,.22);
 }
+
+
+/* -----------------------------------------------
+   CARD BOTTOM
+------------------------------------------------ */
+
+.card-bottom{
+  position:absolute;
+
+  z-index:5;
+
+  left:21px;
+  right:21px;
+  bottom:17px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  justify-content:space-between;
+}
+
+
+/* -----------------------------------------------
+   VALID THRU
+------------------------------------------------ */
+
+.card-valid{
+  margin-right:22px;
+}
+
+.card-valid-label{
+  font-size:6px;
+
+  letter-spacing:.8px;
+
+  opacity:.55;
+}
+
+.card-valid-value{
+  margin-top:2px;
+
+  font-size:9px;
+
+  font-weight:750;
+
+  letter-spacing:.5px;
+}
+
+
+/* -----------------------------------------------
+   CARD HOLDER
+------------------------------------------------ */
+
+.card-holder-label{
+  font-size:6px;
+
+  opacity:.52;
+
+  letter-spacing:1px;
+}
+
+.card-holder{
+  margin-top:2px;
+
+  font-size:10px;
+
+  font-weight:800;
+
+  letter-spacing:.7px;
+
+  text-transform:uppercase;
+}
+
+
+/* -----------------------------------------------
+   CARD COUNT
+------------------------------------------------ */
+
+.card-count{
+  position:absolute;
+
+  right:0;
+
+  bottom:0;
+
+  font-size:8px;
+
+  opacity:.62;
+
+  font-weight:700;
+
+  letter-spacing:.3px;
+}
+
+
+/* -----------------------------------------------
+   NETWORK MARK
+------------------------------------------------ */
+
+.card-network{
+  position:absolute;
+
+  right:21px;
+
+  bottom:14px;
+
+  font-size:10px;
+
+  font-weight:900;
+
+  letter-spacing:-.5px;
+
+  font-style:italic;
+
+  opacity:.9;
+}
+
+
+/* -----------------------------------------------
+   SMALL MOBILE
+------------------------------------------------ */
+
+@media(max-width:360px){
+
+  .total-card{
+    min-height:190px;
+
+    padding:
+      17px 18px;
+  }
+
+  .total-amount{
+    font-size:26px;
+  }
+
+  .card-number{
+    font-size:12px;
+
+    letter-spacing:2.5px;
+  }
+
+  .card-chip{
+    width:39px;
+    height:30px;
+  }
+
+}
+
+
 
 
 /* =====================================================
@@ -145,7 +577,8 @@ button{
 
 .page{
   display:none;
-  padding-bottom:20px;
+
+  padding-bottom:18px;
 }
 
 .page.active{
@@ -158,44 +591,17 @@ button{
 ===================================================== */
 
 .section{
-  padding:0 16px;
-  margin-bottom:18px;
+  padding:0 15px;
+
+  margin-bottom:17px;
 }
 
 .section-title{
-  margin-bottom:9px;
+  margin-bottom:8px;
 
-  font-size:14px;
+  font-size:13px;
+
   font-weight:800;
-}
-
-
-/* =====================================================
-   INPUT
-===================================================== */
-
-.input-box{
-  width:100%;
-
-  border:1px solid #e0e7e4;
-
-  background:#fff;
-
-  border-radius:14px;
-
-  padding:13px 14px;
-
-  outline:none;
-
-  color:#17211e;
-}
-
-.input-box:focus{
-  border-color:#0B6B4F;
-
-  box-shadow:
-    0 0 0 3px
-    rgba(11,107,79,.08);
 }
 
 
@@ -209,13 +615,13 @@ button{
   grid-template-columns:
     1fr 1fr;
 
-  gap:10px;
+  gap:9px;
 }
 
 .category-card{
-  min-height:66px;
+  min-height:65px;
 
-  padding:10px;
+  padding:9px;
 
   border-radius:16px;
 
@@ -231,18 +637,25 @@ button{
 
   flex-direction:column;
 
-  gap:4px;
+  gap:3px;
 
   transition:.18s;
+
+  box-shadow:
+    0 4px 10px
+    rgba(30,55,45,.035);
 }
 
 .category-icon{
   font-size:20px;
+
+  line-height:1;
 }
 
 .category-name{
   font-size:13px;
-  font-weight:750;
+
+  font-weight:800;
 }
 
 .category-card.selected{
@@ -254,7 +667,7 @@ button{
 
   box-shadow:
     0 5px 14px
-    rgba(11,107,79,.10);
+    rgba(11,107,79,.11);
 }
 
 
@@ -272,7 +685,7 @@ button{
 }
 
 .payment-card{
-  min-height:78px;
+  min-height:76px;
 
   padding:8px 4px;
 
@@ -293,32 +706,26 @@ button{
   gap:6px;
 
   transition:.18s;
-}
-
-.payment-card.selected{
-  border-color:#0B6B4F;
-
-  background:#eaf6f1;
 
   box-shadow:
-    0 5px 14px
-    rgba(11,107,79,.10);
+    0 4px 10px
+    rgba(30,55,45,.035);
 }
 
-
-/* =====================================================
-   PAYMENT BRAND ICON
-===================================================== */
+.payment-card:active{
+  transform:scale(.96);
+}
 
 .payment-icon{
-  width:36px;
-  height:36px;
+  width:35px;
+  height:35px;
 
   border-radius:10px;
 
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 
   overflow:hidden;
@@ -327,12 +734,13 @@ button{
 .payment-icon img{
   width:100%;
   height:100%;
+
   object-fit:contain;
 }
 
 .payment-icon-text{
-  width:36px;
-  height:36px;
+  width:35px;
+  height:35px;
 
   border-radius:10px;
 
@@ -341,18 +749,11 @@ button{
   align-items:center;
   justify-content:center;
 
-  font-size:12px;
+  font-size:11px;
+
   font-weight:900;
 
   color:#fff;
-}
-
-.bkash-placeholder{
-  background:#E2136E;
-}
-
-.nagad-placeholder{
-  background:#F7941D;
 }
 
 .bank-placeholder{
@@ -364,110 +765,14 @@ button{
 }
 
 .payment-name{
-  font-size:11px;
-  font-weight:750;
-}
-
-
-/* =====================================================
-   AMOUNT
-===================================================== */
-
-.amount-wrap{
-  position:relative;
-}
-
-.amount-input{
-  width:100%;
-
-  border:1.5px solid #dfe7e3;
-
-  background:#fff;
-
-  border-radius:16px;
-
-  padding:
-    15px
-    52px
-    15px
-    15px;
-
-  outline:none;
-
-  font-size:22px;
-
-  font-weight:800;
-}
-
-.amount-input:focus{
-  border-color:#0B6B4F;
-}
-
-.currency{
-  position:absolute;
-
-  right:16px;
-  top:50%;
-
-  transform:
-    translateY(-50%);
-
-  color:#7a8581;
-
-  font-size:13px;
+  font-size:10px;
 
   font-weight:800;
 }
 
 
 /* =====================================================
-   NOTE
-===================================================== */
-
-.note-input{
-  width:100%;
-
-  min-height:82px;
-
-  resize:none;
-}
-
-
-/* =====================================================
-   SAVE
-===================================================== */
-
-.save-btn{
-  width:
-    calc(100% - 32px);
-
-  margin:
-    2px 16px 22px;
-
-  min-height:54px;
-
-  border-radius:17px;
-
-  background:#0B6B4F;
-
-  color:#fff;
-
-  font-size:16px;
-
-  font-weight:800;
-
-  box-shadow:
-    0 10px 22px
-    rgba(11,107,79,.20);
-}
-
-.save-btn:active{
-  transform:scale(.98);
-}
-
-
-/* =====================================================
-   FILTER
+   TRANSACTIONS
 ===================================================== */
 
 .filter-grid{
@@ -476,7 +781,7 @@ button{
   grid-template-columns:
     1fr 1fr;
 
-  gap:9px;
+  gap:8px;
 
   margin-bottom:10px;
 }
@@ -490,7 +795,7 @@ button{
 
   border-radius:13px;
 
-  padding:11px 10px;
+  padding:10px;
 
   outline:none;
 
@@ -498,11 +803,6 @@ button{
 
   color:#17211e;
 }
-
-
-/* =====================================================
-   SUMMARY
-===================================================== */
 
 .summary-grid{
   display:grid;
@@ -512,7 +812,7 @@ button{
 
   gap:7px;
 
-  margin-bottom:14px;
+  margin-bottom:13px;
 }
 
 .summary-card{
@@ -522,38 +822,33 @@ button{
 
   border-radius:14px;
 
-  padding:11px 7px;
+  padding:10px 6px;
 
   text-align:center;
 }
 
 .summary-label{
-  font-size:10px;
+  font-size:9px;
 
   color:#7b8582;
 
-  font-weight:700;
+  font-weight:750;
 }
 
 .summary-value{
-  margin-top:4px;
+  margin-top:3px;
 
-  font-size:13px;
+  font-size:12px;
 
   font-weight:850;
 }
-
-
-/* =====================================================
-   TRANSACTION
-===================================================== */
 
 .transaction-list{
   display:flex;
 
   flex-direction:column;
 
-  gap:9px;
+  gap:8px;
 }
 
 .transaction-card{
@@ -561,9 +856,9 @@ button{
 
   border:1px solid #e3e9e7;
 
-  border-radius:17px;
+  border-radius:16px;
 
-  padding:13px;
+  padding:12px;
 }
 
 .transaction-top{
@@ -581,20 +876,21 @@ button{
 
   align-items:center;
 
-  gap:10px;
+  gap:9px;
 
   min-width:0;
 }
 
 .transaction-payment-icon{
-  width:39px;
-  height:39px;
+  width:38px;
+  height:38px;
 
-  border-radius:12px;
+  border-radius:11px;
 
   display:flex;
 
   align-items:center;
+
   justify-content:center;
 
   flex:none;
@@ -604,8 +900,8 @@ button{
 
 .transaction-payment-icon
 .payment-icon-text{
-  width:39px;
-  height:39px;
+  width:38px;
+  height:38px;
 }
 
 .transaction-info{
@@ -613,7 +909,8 @@ button{
 }
 
 .transaction-category{
-  font-size:13px;
+  font-size:12px;
+
   font-weight:800;
 }
 
@@ -628,7 +925,7 @@ button{
 .transaction-amount{
   white-space:nowrap;
 
-  font-size:15px;
+  font-size:14px;
 
   font-weight:850;
 
@@ -636,54 +933,19 @@ button{
 }
 
 .transaction-note{
-  margin-top:9px;
+  margin-top:8px;
 
-  padding-top:8px;
+  padding-top:7px;
 
   border-top:
     1px solid #eef1f0;
 
   color:#66716d;
 
-  font-size:11px;
+  font-size:10px;
 
   line-height:1.45;
 }
-
-.transaction-actions{
-  display:flex;
-
-  justify-content:flex-end;
-
-  gap:7px;
-
-  margin-top:10px;
-}
-
-.action-btn{
-  padding:7px 12px;
-
-  border-radius:10px;
-
-  font-size:11px;
-
-  font-weight:750;
-}
-
-.edit-btn{
-  background:#edf5f2;
-  color:#0B6B4F;
-}
-
-.delete-btn{
-  background:#fff0f0;
-  color:#d74747;
-}
-
-
-/* =====================================================
-   EMPTY
-===================================================== */
 
 .empty{
   padding:35px 15px;
@@ -728,7 +990,7 @@ button{
     7px 18px 9px;
 
   background:
-    rgba(255,255,255,.96);
+    rgba(255,255,255,.97);
 
   backdrop-filter:
     blur(14px);
@@ -770,7 +1032,8 @@ button{
 }
 
 .nav-icon{
-  font-size:20px;
+  font-size:19px;
+
   line-height:1;
 }
 
@@ -782,7 +1045,7 @@ button{
 
 
 /* =====================================================
-   MODAL
+   EXPENSE POPUP
 ===================================================== */
 
 .modal-bg{
@@ -793,7 +1056,7 @@ button{
   inset:0;
 
   background:
-    rgba(0,0,0,.38);
+    rgba(0,0,0,.42);
 
   display:none;
 
@@ -814,14 +1077,41 @@ button{
   background:#fff;
 
   border-radius:
-    24px 24px 0 0;
+    25px 25px 0 0;
 
   padding:
-    20px 16px 26px;
+    16px 16px
+    calc(18px + env(safe-area-inset-bottom));
 
-  max-height:90vh;
+  max-height:92vh;
 
   overflow:auto;
+
+  animation:
+    popupUp .22s ease-out;
+}
+
+@keyframes popupUp{
+
+  from{
+    transform:translateY(100%);
+  }
+
+  to{
+    transform:translateY(0);
+  }
+
+}
+
+.modal-handle{
+  width:40px;
+  height:4px;
+
+  border-radius:20px;
+
+  background:#d8dfdc;
+
+  margin:0 auto 14px;
 }
 
 .modal-title{
@@ -829,38 +1119,160 @@ button{
 
   font-weight:850;
 
-  margin-bottom:15px;
+  margin-bottom:13px;
 }
 
-.modal-actions{
-  display:grid;
+.selected-info{
+  display:flex;
 
-  grid-template-columns:
-    1fr 1fr;
+  align-items:center;
 
-  gap:9px;
+  justify-content:space-between;
 
-  margin-top:15px;
-}
+  gap:8px;
 
-.modal-cancel{
-  background:#edf1ef;
-
-  color:#53605b;
-}
-
-.modal-save{
-  background:#0B6B4F;
-
-  color:#fff;
-}
-
-.modal-btn{
-  min-height:48px;
+  padding:11px 12px;
 
   border-radius:14px;
 
+  background:#edf7f3;
+
+  border:1px solid #d6ebe3;
+
+  color:#0B6B4F;
+
+  font-size:12px;
+
   font-weight:800;
+
+  margin-bottom:14px;
+}
+
+.selected-info-arrow{
+  opacity:.5;
+}
+
+.modal-field{
+  margin-bottom:12px;
+}
+
+.modal-label{
+  display:block;
+
+  margin-bottom:6px;
+
+  font-size:12px;
+
+  font-weight:800;
+
+  color:#4e5b56;
+}
+
+.input-box{
+  width:100%;
+
+  border:1px solid #e0e7e4;
+
+  background:#fff;
+
+  border-radius:13px;
+
+  padding:12px 13px;
+
+  outline:none;
+
+  color:#17211e;
+}
+
+.input-box:focus{
+  border-color:#0B6B4F;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(11,107,79,.08);
+}
+
+.modal-amount-wrap{
+  position:relative;
+}
+
+.modal-amount{
+  width:100%;
+
+  border:1.5px solid #dfe7e3;
+
+  background:#fff;
+
+  border-radius:15px;
+
+  padding:
+    14px 55px
+    14px 14px;
+
+  outline:none;
+
+  font-size:23px;
+
+  font-weight:850;
+
+  color:#17211e;
+}
+
+.modal-amount:focus{
+  border-color:#0B6B4F;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(11,107,79,.07);
+}
+
+.modal-currency{
+  position:absolute;
+
+  right:15px;
+
+  top:50%;
+
+  transform:
+    translateY(-50%);
+
+  color:#7a8581;
+
+  font-size:12px;
+
+  font-weight:850;
+}
+
+.modal-note{
+  min-height:70px;
+
+  resize:none;
+}
+
+.modal-save{
+  width:100%;
+
+  min-height:52px;
+
+  margin-top:3px;
+
+  border-radius:15px;
+
+  background:#0B6B4F;
+
+  color:#fff;
+
+  font-size:15px;
+
+  font-weight:850;
+
+  box-shadow:
+    0 9px 20px
+    rgba(11,107,79,.20);
+}
+
+.modal-save:active{
+  transform:scale(.98);
 }
 
 
@@ -875,7 +1287,7 @@ button{
 
   left:50%;
 
-  bottom:84px;
+  bottom:83px;
 
   transform:
     translateX(-50%)
@@ -899,6 +1311,8 @@ button{
   pointer-events:none;
 
   transition:.25s;
+
+  white-space:nowrap;
 }
 
 .toast.show{
@@ -925,7 +1339,11 @@ button{
   }
 
   .payment-name{
-    font-size:10px;
+    font-size:9px;
+  }
+
+  .total-card{
+    min-height:180px;
   }
 
   .total-amount{
@@ -965,55 +1383,113 @@ button{
   </header>
 
 
-  <!-- TOTAL -->
+  <!-- =================================================
+       ATM TOTAL CARD
+  ================================================== -->
+<div class="total-card-wrap">
 
   <div class="total-card">
 
-    <div class="total-label">
-      TOTAL EXPENSE
+
+    <!-- CARD TOP -->
+
+    <div class="card-top">
+
+      <div class="card-brand">
+        FAMILY MAINTENANCE
+      </div>
+
+      <div class="card-contactless">
+        ))) 
+      </div>
+
+      <div class="card-chip"></div>
+
     </div>
 
-    <div
-      id="totalExpense"
-      class="total-amount"
-    >
-      0 TK
+
+    <!-- CARD MAIN -->
+
+    <div class="card-middle">
+
+      <div class="total-label">
+        TOTAL EXPENSE
+      </div>
+
+      <div
+        id="totalExpense"
+        class="total-amount"
+      >
+        0 TK
+      </div>
+
+      <div class="card-number">
+        4827&nbsp;&nbsp;••••&nbsp;&nbsp;••••&nbsp;&nbsp;FM01
+      </div>
+
     </div>
 
-    <div
-      id="totalCount"
-      class="total-count"
-    >
-      0 Transactions
+
+    <!-- CARD BOTTOM -->
+
+    <div class="card-bottom">
+
+      <div>
+
+        <div class="card-holder-label">
+          CARD HOLDER
+        </div>
+
+        <div class="card-holder">
+          FAMILY EXPENSE
+        </div>
+
+      </div>
+
+
+      <div class="card-valid">
+
+        <div class="card-valid-label">
+          VALID THRU
+        </div>
+
+        <div class="card-valid-value">
+          09/30
+        </div>
+
+      </div>
+
+
+      <div
+        id="totalCount"
+        class="card-count"
+      >
+        0 Transactions
+      </div>
+
+
+      <div class="card-network">
+        FM
+      </div>
+
     </div>
 
   </div>
 
-
-  <!-- DATE -->
-
-  <div class="section">
-
-    <div class="section-title">
-      তারিখ
-    </div>
-
-    <input
-      id="expenseDate"
-      class="input-box"
-      type="date"
-    >
-
-  </div>
+</div>
 
 
-  <!-- CATEGORY -->
+
+  <!-- =================================================
+       CATEGORY
+  ================================================== -->
 
   <div class="section">
 
     <div class="section-title">
-      Main Category
+      Category
     </div>
+
 
     <div class="category-grid">
 
@@ -1055,13 +1531,16 @@ button{
   </div>
 
 
-  <!-- PAYMENT -->
+  <!-- =================================================
+       PAYMENT
+  ================================================== -->
 
   <div class="section">
 
     <div class="section-title">
       Payment Method
     </div>
+
 
     <div class="payment-grid">
 
@@ -1070,13 +1549,18 @@ button{
 
       <button
         type="button"
-        class="payment-card selected"
+        class="payment-card"
         data-payment="বিকাশ"
       >
 
         <div class="payment-icon">
-  <img src="bkash-logo.svg" alt="bKash">
-</div>
+
+          <img
+            src="bkash-logo.svg"
+            alt="bKash"
+          >
+
+        </div>
 
         <div class="payment-name">
           বিকাশ
@@ -1094,8 +1578,13 @@ button{
       >
 
         <div class="payment-icon">
-  <img src="nagad-logo.svg" alt="Nagad">
-</div>
+
+          <img
+            src="nagad-logo.svg"
+            alt="Nagad"
+          >
+
+        </div>
 
         <div class="payment-name">
           নগদ
@@ -1115,7 +1604,10 @@ button{
         <div class="payment-icon">
 
           <div
-            class="payment-icon-text bank-placeholder"
+            class="
+              payment-icon-text
+              bank-placeholder
+            "
           >
             BANK
           </div>
@@ -1140,7 +1632,10 @@ button{
         <div class="payment-icon">
 
           <div
-            class="payment-icon-text cash-placeholder"
+            class="
+              payment-icon-text
+              cash-placeholder
+            "
           >
             ৳
           </div>
@@ -1158,62 +1653,6 @@ button{
 
   </div>
 
-
-  <!-- AMOUNT -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Amount
-    </div>
-
-    <div class="amount-wrap">
-
-      <input
-        id="expenseAmount"
-        class="amount-input"
-        type="number"
-        inputmode="numeric"
-        min="0"
-        step="1"
-        placeholder="0"
-      >
-
-      <span class="currency">
-        TK
-      </span>
-
-    </div>
-
-  </div>
-
-
-  <!-- NOTE -->
-
-  <div class="section">
-
-    <div class="section-title">
-      Note
-    </div>
-
-    <textarea
-      id="expenseNote"
-      class="input-box note-input"
-      placeholder="খরচের বিস্তারিত লিখুন..."
-    ></textarea>
-
-  </div>
-
-
-  <!-- SAVE -->
-
-  <button
-    id="saveBtn"
-    class="save-btn"
-    type="button"
-  >
-    SAVE EXPENSE
-  </button>
 
 </section>
 
@@ -1243,8 +1682,6 @@ button{
 
   <div class="section">
 
-
-    <!-- FILTER -->
 
     <div class="filter-grid">
 
@@ -1310,8 +1747,6 @@ button{
     </div>
 
 
-    <!-- SUMMARY -->
-
     <div class="summary-grid">
 
 
@@ -1366,8 +1801,6 @@ button{
     </div>
 
 
-    <!-- LIST -->
-
     <div
       id="transactionList"
       class="transaction-list"
@@ -1386,7 +1819,6 @@ button{
 ===================================================== -->
 
 <nav class="bottom-nav">
-
 
   <button
     id="homeNav"
@@ -1421,48 +1853,59 @@ button{
 
   </button>
 
-
 </nav>
 
 
 
 <!-- =====================================================
-     EDIT MODAL
+     EXPENSE POPUP
 ===================================================== -->
 
 <div
-  id="editModal"
+  id="expenseModal"
   class="modal-bg"
 >
 
   <div class="modal">
 
+    <div class="modal-handle"></div>
+
 
     <div class="modal-title">
-      Edit Transaction
+      Add Expense
     </div>
 
 
-    <input
-      id="editId"
-      type="hidden"
-    >
+    <div class="selected-info">
+
+      <span id="popupCategory">
+        Family
+      </span>
+
+      <span class="selected-info-arrow">
+        ─────
+      </span>
+
+      <span id="popupPayment">
+        বিকাশ
+      </span>
+
+    </div>
 
 
-    <div
-      class="section"
-      style="
-        padding:0;
-        margin-bottom:12px;
-      "
-    >
+    <!-- DATE -->
 
-      <div class="section-title">
+    <div class="modal-field">
+
+      <label
+        class="modal-label"
+        for="popupDate"
+      >
         তারিখ
-      </div>
+      </label>
 
       <input
-        id="editDate"
+        id="popupDate"
         class="input-box"
         type="date"
       >
@@ -1470,98 +1913,30 @@ button{
     </div>
 
 
-    <div
-      class="section"
-      style="
-        padding:0;
-        margin-bottom:12px;
-      "
-    >
+    <!-- AMOUNT -->
 
-      <div class="section-title">
-        Category
-      </div>
+    <div class="modal-field">
 
-      <select
-        id="editCategory"
-        class="input-box"
+      <label
+        class="modal-label"
+        for="popupAmount"
       >
-
-        <option value="Family">
-          Family
-        </option>
-
-        <option value="Wife">
-          Wife
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <div
-      class="section"
-      style="
-        padding:0;
-        margin-bottom:12px;
-      "
-    >
-
-      <div class="section-title">
-        Payment
-      </div>
-
-      <select
-        id="editPayment"
-        class="input-box"
-      >
-
-        <option value="বিকাশ">
-          বিকাশ
-        </option>
-
-        <option value="নগদ">
-          নগদ
-        </option>
-
-        <option value="ব্যাংক">
-          ব্যাংক
-        </option>
-
-        <option value="ক্যাশ">
-          ক্যাশ
-        </option>
-
-      </select>
-
-    </div>
-
-
-    <div
-      class="section"
-      style="
-        padding:0;
-        margin-bottom:12px;
-      "
-    >
-
-      <div class="section-title">
         Amount
-      </div>
+      </label>
 
-      <div class="amount-wrap">
+      <div class="modal-amount-wrap">
 
         <input
-          id="editAmount"
-          class="amount-input"
+          id="popupAmount"
+          class="modal-amount"
           type="number"
           inputmode="numeric"
           min="0"
           step="1"
+          placeholder="0"
         >
 
-        <span class="currency">
+        <span class="modal-currency">
           TK
         </span>
 
@@ -1570,46 +1945,36 @@ button{
     </div>
 
 
-    <div
-      class="section"
-      style="
-        padding:0;
-        margin-bottom:0;
-      "
-    >
+    <!-- NOTE -->
 
-      <div class="section-title">
+    <div class="modal-field">
+
+      <label
+        class="modal-label"
+        for="popupNote"
+      >
         Note
-      </div>
+      </label>
 
       <textarea
-        id="editNote"
-        class="input-box note-input"
+        id="popupNote"
+        class="input-box modal-note"
+        placeholder="খরচের বিস্তারিত লিখুন..."
       ></textarea>
 
     </div>
 
 
-    <div class="modal-actions">
+    <!-- SAVE -->
 
-      <button
-        id="cancelEdit"
-        class="modal-btn modal-cancel"
-        type="button"
-      >
-        Cancel
-      </button>
+    <button
+      id="popupSave"
+      class="modal-save"
+      type="button"
+    >
+      SAVE EXPENSE
+    </button>
 
-
-      <button
-        id="saveEdit"
-        class="modal-btn modal-save"
-        type="button"
-      >
-        Save Changes
-      </button>
-
-    </div>
 
   </div>
 
@@ -1648,7 +2013,15 @@ let selectedCategory =
   "Family";
 
 let selectedPayment =
-  "বিকাশ";
+  "";
+
+
+/* =====================================================
+   SCROLL MEMORY
+===================================================== */
+
+let savedHomeScroll =
+  0;
 
 
 /* =====================================================
@@ -1673,26 +2046,6 @@ const homeNav =
 const transactionsNav =
   document.getElementById(
     "transactionsNav"
-  );
-
-const expenseDate =
-  document.getElementById(
-    "expenseDate"
-  );
-
-const expenseAmount =
-  document.getElementById(
-    "expenseAmount"
-  );
-
-const expenseNote =
-  document.getElementById(
-    "expenseNote"
-  );
-
-const saveBtn =
-  document.getElementById(
-    "saveBtn"
   );
 
 const totalExpense =
@@ -1740,49 +2093,44 @@ const filteredTotal =
     "filteredTotal"
   );
 
-const editModal =
+
+/* =====================================================
+   POPUP DOM
+===================================================== */
+
+const expenseModal =
   document.getElementById(
-    "editModal"
+    "expenseModal"
   );
 
-const editId =
+const popupCategory =
   document.getElementById(
-    "editId"
+    "popupCategory"
   );
 
-const editDate =
+const popupPayment =
   document.getElementById(
-    "editDate"
+    "popupPayment"
   );
 
-const editCategory =
+const popupDate =
   document.getElementById(
-    "editCategory"
+    "popupDate"
   );
 
-const editPayment =
+const popupAmount =
   document.getElementById(
-    "editPayment"
+    "popupAmount"
   );
 
-const editAmount =
+const popupNote =
   document.getElementById(
-    "editAmount"
+    "popupNote"
   );
 
-const editNote =
+const popupSave =
   document.getElementById(
-    "editNote"
-  );
-
-const cancelEdit =
-  document.getElementById(
-    "cancelEdit"
-  );
-
-const saveEdit =
-  document.getElementById(
-    "saveEdit"
+    "popupSave"
   );
 
 const toast =
@@ -1815,6 +2163,8 @@ function init(){
 
   setupFilters();
 
+  setupPopup();
+
   refreshUI();
 
 }
@@ -1824,15 +2174,19 @@ function init(){
    TODAY
 ===================================================== */
 
+function getToday(){
+
+  return new Date()
+    .toISOString()
+    .split("T")[0];
+
+}
+
+
 function setToday(){
 
-  const today =
-    new Date()
-      .toISOString()
-      .split("T")[0];
-
-  expenseDate.value =
-    today;
+  popupDate.value =
+    getToday();
 
 }
 
@@ -1881,7 +2235,7 @@ function loadTransactions(){
 
 
 /* =====================================================
-   SAVE
+   SAVE STORAGE
 ===================================================== */
 
 function saveTransactions(){
@@ -1902,11 +2256,8 @@ function saveTransactions(){
 
 function createTransactionId(){
 
-  const now =
-    new Date();
-
   const timestamp =
-    now.getTime();
+    Date.now();
 
   const random =
     Math.random()
@@ -1925,7 +2276,7 @@ function createTransactionId(){
 
 
 /* =====================================================
-   CATEGORY
+   CATEGORY BUTTONS
 ===================================================== */
 
 function setupCategoryButtons(){
@@ -1968,7 +2319,7 @@ function setupCategoryButtons(){
 
 
 /* =====================================================
-   PAYMENT
+   PAYMENT BUTTONS
 ===================================================== */
 
 function setupPaymentButtons(){
@@ -1983,24 +2334,10 @@ function setupPaymentButtons(){
         "click",
         () => {
 
-          document
-            .querySelectorAll(
-              ".payment-card"
-            )
-            .forEach(item => {
-
-              item.classList.remove(
-                "selected"
-              );
-
-            });
-
-          button.classList.add(
-            "selected"
-          );
-
           selectedPayment =
             button.dataset.payment;
+
+          openExpensePopup();
 
         }
       );
@@ -2011,28 +2348,269 @@ function setupPaymentButtons(){
 
 
 /* =====================================================
-   SAVE EXPENSE
+   OPEN POPUP
 ===================================================== */
 
-saveBtn.addEventListener(
-  "click",
-  saveExpense
-);
+function openExpensePopup(){
 
+  savedHomeScroll =
+    window.scrollY;
+
+
+  popupCategory.textContent =
+    selectedCategory;
+
+  popupPayment.textContent =
+    selectedPayment;
+
+
+  popupDate.value =
+    getToday();
+
+  popupAmount.value =
+    "";
+
+  popupNote.value =
+    "";
+
+
+  expenseModal.classList.add(
+    "show"
+  );
+
+
+  /*
+    Give Android a moment to open
+    the keyboard correctly.
+  */
+
+  setTimeout(
+    () => {
+
+      popupAmount.focus();
+
+      scrollPopupToAmount();
+
+    },
+    180
+  );
+
+}
+
+
+/* =====================================================
+   POPUP SETUP
+===================================================== */
+
+function setupPopup(){
+
+  popupSave.addEventListener(
+    "click",
+    saveExpense
+  );
+
+
+  /*
+    Android keyboard Done button
+  */
+
+  popupAmount.addEventListener(
+    "keydown",
+    event => {
+
+      if(
+        event.key === "Enter"
+      ){
+
+        event.preventDefault();
+
+        saveExpense();
+
+      }
+
+    }
+  );
+
+
+  popupNote.addEventListener(
+    "keydown",
+    event => {
+
+      /*
+        Ctrl/Enter বা keyboard
+        submit style behaviour.
+      */
+
+      if(
+        event.key === "Enter" &&
+        event.ctrlKey
+      ){
+
+        event.preventDefault();
+
+        saveExpense();
+
+      }
+
+    }
+  );
+
+
+  /*
+    Tap outside popup to close.
+  */
+
+  expenseModal.addEventListener(
+    "click",
+    event => {
+
+      if(
+        event.target ===
+        expenseModal
+      ){
+
+        closeExpensePopup();
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   POPUP SCROLL / KEYBOARD SUPPORT
+===================================================== */
+
+function scrollPopupToAmount(){
+
+  setTimeout(
+    () => {
+
+      popupAmount.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },
+    100
+  );
+
+}
+
+
+/*
+  When Android keyboard changes
+  viewport height, keep Save button
+  visible above keyboard.
+*/
+
+if(
+  window.visualViewport
+){
+
+  window.visualViewport.addEventListener(
+    "resize",
+    keepPopupVisible
+  );
+
+  window.visualViewport.addEventListener(
+    "scroll",
+    keepPopupVisible
+  );
+
+}
+
+
+function keepPopupVisible(){
+
+  if(
+    !expenseModal.classList.contains(
+      "show"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  setTimeout(
+    () => {
+
+      popupSave.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+      });
+
+    },
+    60
+  );
+
+}
+
+
+/* =====================================================
+   CLOSE POPUP
+===================================================== */
+
+function closeExpensePopup(){
+
+  /*
+    Remove keyboard
+  */
+
+  if(
+    document.activeElement
+  ){
+
+    document.activeElement.blur();
+
+  }
+
+
+  expenseModal.classList.remove(
+    "show"
+  );
+
+
+  /*
+    Restore previous Home position
+  */
+
+  setTimeout(
+    () => {
+
+      window.scrollTo(
+        0,
+        savedHomeScroll
+      );
+
+    },
+    80
+  );
+
+}
+
+
+/* =====================================================
+   SAVE EXPENSE
+===================================================== */
 
 function saveExpense(){
 
   const date =
-    expenseDate.value;
+    popupDate.value;
 
   const amount =
     parseInt(
-      expenseAmount.value,
+      popupAmount.value,
       10
     );
 
   const note =
-    expenseNote.value.trim();
+    popupNote.value.trim();
 
 
   if(!date){
@@ -2040,6 +2618,8 @@ function saveExpense(){
     showToast(
       "তারিখ নির্বাচন করুন"
     );
+
+    popupDate.focus();
 
     return;
 
@@ -2055,7 +2635,7 @@ function saveExpense(){
       "সঠিক Amount দিন"
     );
 
-    expenseAmount.focus();
+    popupAmount.focus();
 
     return;
 
@@ -2091,6 +2671,10 @@ function saveExpense(){
   };
 
 
+  /*
+    Save locally first
+  */
+
   transactions.unshift(
     transaction
   );
@@ -2099,20 +2683,33 @@ function saveExpense(){
   saveTransactions();
 
 
-  expenseAmount.value =
-    "";
+  /*
+    Close popup
+  */
 
-  expenseNote.value =
-    "";
+  closeExpensePopup();
 
 
-  setToday();
+  /*
+    Update all UI
+  */
 
   refreshUI();
 
 
-  showToast(
-    "Expense Saved ✓"
+  /*
+    Small confirmation
+  */
+
+  setTimeout(
+    () => {
+
+      showToast(
+        "Expense Saved ✓"
+      );
+
+    },
+    180
   );
 
 }
@@ -2195,6 +2792,11 @@ function showPage(page){
     populateMonthFilter();
 
     renderTransactions();
+
+    window.scrollTo(
+      0,
+      0
+    );
 
   }
 
@@ -2386,7 +2988,7 @@ function getFilteredTransactions(){
 
 
 /* =====================================================
-   RENDER
+   RENDER TRANSACTIONS
 ===================================================== */
 
 function renderTransactions(){
@@ -2437,26 +3039,42 @@ function paymentDisplay(
   payment
 ){
 
-  if(payment === "বিকাশ"){
-  return `
-    <img
-      src="bkash-logo.svg"
-      alt="bKash"
-      style="width:100%;height:100%;object-fit:contain;"
-    >
-  `;
-}
+  if(
+    payment === "বিকাশ"
+  ){
+
+    return `
+      <img
+        src="bkash-logo.svg"
+        alt="bKash"
+        style="
+          width:100%;
+          height:100%;
+          object-fit:contain;
+        "
+      >
+    `;
+
+  }
 
 
-  if(payment === "নগদ"){
-  return `
-    <img
-      src="nagad-logo.svg"
-      alt="Nagad"
-      style="width:100%;height:100%;object-fit:contain;"
-    >
-  `;
-}
+  if(
+    payment === "নগদ"
+  ){
+
+    return `
+      <img
+        src="nagad-logo.svg"
+        alt="Nagad"
+        style="
+          width:100%;
+          height:100%;
+          object-fit:contain;
+        "
+      >
+    `;
+
+  }
 
 
   if(
@@ -2501,22 +3119,14 @@ function transactionHTML(
 
   return `
 
-    <div
-      class="transaction-card"
-    >
+    <div class="transaction-card">
 
-      <div
-        class="transaction-top"
-      >
+      <div class="transaction-top">
 
-        <div
-          class="transaction-left"
-        >
+        <div class="transaction-left">
 
           <div
-            class="
-              transaction-payment-icon
-            "
+            class="transaction-payment-icon"
           >
 
             ${paymentDisplay(
@@ -2526,9 +3136,7 @@ function transactionHTML(
           </div>
 
 
-          <div
-            class="transaction-info"
-          >
+          <div class="transaction-info">
 
             <div
               class="transaction-category"
@@ -2592,44 +3200,6 @@ function transactionHTML(
           :
           ""
       }
-
-
-      <div
-        class="transaction-actions"
-      >
-
-        <button
-          class="
-            action-btn
-            edit-btn
-          "
-          type="button"
-          onclick="
-            openEdit(
-              '${transaction.id}'
-            )
-          "
-        >
-          Edit
-        </button>
-
-
-        <button
-          class="
-            action-btn
-            delete-btn
-          "
-          type="button"
-          onclick="
-            deleteTransaction(
-              '${transaction.id}'
-            )
-          "
-        >
-          Delete
-        </button>
-
-      </div>
 
     </div>
 
@@ -2753,219 +3323,6 @@ function updateGlobalTotal(){
 
 
 /* =====================================================
-   EDIT
-===================================================== */
-
-function openEdit(id){
-
-  const transaction =
-    transactions.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!transaction){
-    return;
-  }
-
-
-  editId.value =
-    transaction.id;
-
-  editDate.value =
-    transaction.date;
-
-  editCategory.value =
-    transaction.category;
-
-  editPayment.value =
-    transaction.payment;
-
-  editAmount.value =
-    transaction.amount;
-
-  editNote.value =
-    transaction.note || "";
-
-
-  editModal.classList.add(
-    "show"
-  );
-
-}
-
-
-window.openEdit =
-  openEdit;
-
-
-/* =====================================================
-   CANCEL EDIT
-===================================================== */
-
-cancelEdit.addEventListener(
-  "click",
-  () => {
-
-    editModal.classList.remove(
-      "show"
-    );
-
-  }
-);
-
-
-/* =====================================================
-   SAVE EDIT
-===================================================== */
-
-saveEdit.addEventListener(
-  "click",
-  () => {
-
-    const id =
-      editId.value;
-
-
-    const index =
-      transactions.findIndex(
-        item =>
-          item.id === id
-      );
-
-
-    if(
-      index === -1
-    ){
-
-      return;
-
-    }
-
-
-    const amount =
-      parseInt(
-        editAmount.value,
-        10
-      );
-
-
-    if(
-      !editDate.value ||
-      !amount ||
-      amount <= 0
-    ){
-
-      showToast(
-        "সঠিক তথ্য দিন"
-      );
-
-      return;
-
-    }
-
-
-    transactions[index] = {
-
-      ...transactions[index],
-
-      date:
-        editDate.value,
-
-      category:
-        editCategory.value,
-
-      payment:
-        editPayment.value,
-
-      amount:
-        amount,
-
-      note:
-        editNote.value.trim(),
-
-      updatedAt:
-        new Date().toISOString()
-
-    };
-
-
-    saveTransactions();
-
-
-    editModal.classList.remove(
-      "show"
-    );
-
-
-    refreshUI();
-
-
-    showToast(
-      "Transaction Updated ✓"
-    );
-
-  }
-);
-
-
-/* =====================================================
-   DELETE
-===================================================== */
-
-function deleteTransaction(
-  id
-){
-
-  const transaction =
-    transactions.find(
-      item =>
-        item.id === id
-    );
-
-
-  if(!transaction){
-    return;
-  }
-
-
-  const confirmed =
-    confirm(
-      "এই Transaction টি Delete করতে চান?"
-    );
-
-
-  if(!confirmed){
-    return;
-  }
-
-
-  transactions =
-    transactions.filter(
-      item =>
-        item.id !== id
-    );
-
-
-  saveTransactions();
-
-
-  refreshUI();
-
-
-  showToast(
-    "Transaction Deleted"
-  );
-
-}
-
-
-window.deleteTransaction =
-  deleteTransaction;
-
-
-/* =====================================================
    REFRESH
 ===================================================== */
 
@@ -2981,7 +3338,7 @@ function refreshUI(){
 
 
 /* =====================================================
-   BANGLA / INDIAN NUMBER FORMAT
+   INDIAN NUMBER FORMAT
 ===================================================== */
 
 function formatAmount(
@@ -3102,29 +3459,6 @@ function showToast(
     );
 
 }
-
-
-/* =====================================================
-   CLOSE MODAL
-===================================================== */
-
-editModal.addEventListener(
-  "click",
-  event => {
-
-    if(
-      event.target ===
-      editModal
-    ){
-
-      editModal.classList.remove(
-        "show"
-      );
-
-    }
-
-  }
-);
 
 </script>
 
