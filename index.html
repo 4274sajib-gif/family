@@ -1075,14 +1075,8 @@ button{
       >
 
         <div class="payment-icon">
-
-          <div
-            class="payment-icon-text bkash-placeholder"
-          >
-            bK
-          </div>
-
-        </div>
+  <img src="bkash-logo.svg" alt="bKash">
+</div>
 
         <div class="payment-name">
           বিকাশ
@@ -1100,14 +1094,8 @@ button{
       >
 
         <div class="payment-icon">
-
-          <div
-            class="payment-icon-text nagad-placeholder"
-          >
-            N
-          </div>
-
-        </div>
+  <img src="nagad-logo.svg" alt="Nagad">
+</div>
 
         <div class="payment-name">
           নগদ
@@ -2449,40 +2437,26 @@ function paymentDisplay(
   payment
 ){
 
-  if(
-    payment === "বিকাশ"
-  ){
-
-    return `
-      <div
-        class="
-          payment-icon-text
-          bkash-placeholder
-        "
-      >
-        bK
-      </div>
-    `;
-
-  }
+  if(payment === "বিকাশ"){
+  return `
+    <img
+      src="bkash-logo.svg"
+      alt="bKash"
+      style="width:100%;height:100%;object-fit:contain;"
+    >
+  `;
+}
 
 
-  if(
-    payment === "নগদ"
-  ){
-
-    return `
-      <div
-        class="
-          payment-icon-text
-          nagad-placeholder
-        "
-      >
-        N
-      </div>
-    `;
-
-  }
+  if(payment === "নগদ"){
+  return `
+    <img
+      src="nagad-logo.svg"
+      alt="Nagad"
+      style="width:100%;height:100%;object-fit:contain;"
+    >
+  `;
+}
 
 
   if(
