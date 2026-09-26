@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
 
 <meta charset="UTF-8">
@@ -17,7 +18,7 @@
 <style>
 
 /* =====================================================
-   BASIC
+BASIC
 ===================================================== */
 
 *{
@@ -57,9 +58,8 @@ button{
   cursor:pointer;
 }
 
-
 /* =====================================================
-   APP
+APP
 ===================================================== */
 
 .app{
@@ -70,51 +70,90 @@ button{
   background:#f4f7f6;
 }
 
-
 /* =====================================================
-   HEADER
+SYNC STATUS
 ===================================================== */
 
-.header{
-  padding:20px 17px 13px;
+.sync-status{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-top:8px;
+  width:max-content;
+  padding:5px 9px;
+  border-radius:20px;
+  background:#e9efed;
+  color:#68736f;
+  font-size:9px;
+  font-weight:800;
 }
 
-.header-title{
-  font-size:23px;
-  font-weight:850;
-  letter-spacing:-.6px;
+.sync-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#9aa5a1;
 }
 
-.header-subtitle{
-  margin-top:3px;
-  color:#7a8581;
-  font-size:12px;
+.sync-status.pending{
+  background:#fff4df;
+  color:#9a6500;
 }
 
+.sync-status.pending .sync-dot{
+  background:#e5a323;
+}
+
+.sync-status.syncing{
+  background:#eaf3ff;
+  color:#27659e;
+}
+
+.sync-status.syncing .sync-dot{
+  background:#3d8fe0;
+  animation:syncPulse 1s infinite;
+}
+
+.sync-status.synced{
+  background:#e8f6ef;
+  color:#16734f;
+}
+
+.sync-status.synced .sync-dot{
+  background:#19a66b;
+}
+
+.sync-status.offline{
+  background:#f1f2f2;
+  color:#727c79;
+}
+
+.sync-status.offline .sync-dot{
+  background:#9aa5a1;
+}
+
+@keyframes syncPulse{
+  50%{
+    opacity:.35;
+  }
+}
 
 /* =====================================================
-   REALISTIC ATM / BANK CARD
+REALISTIC ATM / BANK CARD
 ===================================================== */
 
 .total-card-wrap{
-  padding:0 15px 20px;
+  padding:12px 15px 20px;
 }
 
 .total-card{
   position:relative;
-
   width:100%;
-
   aspect-ratio:1.586 / 1;
-
   min-height:205px;
-
   padding:20px 21px;
-
   border-radius:20px;
-
   overflow:hidden;
-
   color:#fff;
 
   background:
@@ -133,25 +172,16 @@ button{
   box-shadow:
     0 18px 35px
     rgba(0,45,32,.28),
-
     0 5px 10px
     rgba(0,0,0,.10);
 
   isolation:isolate;
 }
 
-
-/* -----------------------------------------------
-   CARD LIGHT / SECURITY EFFECT
------------------------------------------------- */
-
 .total-card::before{
   content:"";
-
   position:absolute;
-
   inset:-30%;
-
   z-index:-1;
 
   background:
@@ -160,7 +190,6 @@ button{
       rgba(255,255,255,.20),
       transparent 25%
     ),
-
     radial-gradient(
       circle at 90% 90%,
       rgba(0,0,0,.18),
@@ -170,20 +199,11 @@ button{
   transform:rotate(-8deg);
 }
 
-
-/* -----------------------------------------------
-   DIAGONAL SECURITY LINES
------------------------------------------------- */
-
 .total-card::after{
   content:"";
-
   position:absolute;
-
   inset:0;
-
   z-index:-1;
-
   opacity:.16;
 
   background:
@@ -196,68 +216,41 @@ button{
     );
 }
 
-
-/* -----------------------------------------------
-   CARD TOP
------------------------------------------------- */
+/* =====================================================
+CARD
+===================================================== */
 
 .card-top{
   position:relative;
-
   z-index:5;
 
   display:flex;
-
   align-items:flex-start;
-
   justify-content:space-between;
 }
 
-
-/* -----------------------------------------------
-   CARD BRAND
------------------------------------------------- */
-
 .card-brand{
   font-size:11px;
-
   font-weight:900;
-
   letter-spacing:1.8px;
-
-  color:
-    rgba(255,255,255,.92);
+  color:rgba(255,255,255,.92);
 
   text-shadow:
     0 1px 2px
     rgba(0,0,0,.25);
 }
 
-
-/* -----------------------------------------------
-   CONTACTLESS SYMBOL
------------------------------------------------- */
-
 .card-contactless{
   position:absolute;
-
   right:60px;
-
   top:1px;
 
   font-size:18px;
-
   line-height:1;
-
   opacity:.82;
 
   transform:rotate(90deg);
 }
-
-
-/* -----------------------------------------------
-   EMV CHIP
------------------------------------------------- */
 
 .card-chip{
   width:43px;
@@ -266,7 +259,6 @@ button{
   border-radius:8px;
 
   position:relative;
-
   overflow:hidden;
 
   background:
@@ -285,23 +277,16 @@ button{
   box-shadow:
     inset 0 1px 1px
     rgba(255,255,255,.65),
-
     0 2px 4px
     rgba(0,0,0,.20);
 }
 
-
-/* chip vertical lines */
-
 .card-chip::before{
   content:"";
-
   position:absolute;
-
   inset:0;
 
   background:
-
     linear-gradient(
       90deg,
       transparent 31%,
@@ -313,7 +298,6 @@ button{
       rgba(85,70,35,.38) 68%,
       transparent 69%
     ),
-
     linear-gradient(
       0deg,
       transparent 47%,
@@ -323,12 +307,8 @@ button{
     );
 }
 
-
-/* chip center */
-
 .card-chip::after{
   content:"";
-
   position:absolute;
 
   width:14px;
@@ -347,50 +327,25 @@ button{
   border-radius:4px;
 }
 
-
-/* -----------------------------------------------
-   CARD MAIN
------------------------------------------------- */
-
 .card-middle{
   position:relative;
-
   z-index:5;
-
   margin-top:17px;
 }
 
-
-/* -----------------------------------------------
-   TOTAL LABEL
------------------------------------------------- */
-
 .total-label{
   font-size:9px;
-
   letter-spacing:1.4px;
-
   font-weight:800;
-
   opacity:.65;
-
   text-transform:uppercase;
 }
 
-
-/* -----------------------------------------------
-   TOTAL AMOUNT
------------------------------------------------- */
-
 .total-amount{
   margin-top:3px;
-
   font-size:29px;
-
   line-height:1.05;
-
   font-weight:900;
-
   letter-spacing:-.8px;
 
   text-shadow:
@@ -398,36 +353,24 @@ button{
     rgba(0,0,0,.22);
 }
 
-
-/* -----------------------------------------------
-   CARD NUMBER
------------------------------------------------- */
-
 .card-number{
   margin-top:11px;
-
   font-size:14px;
-
   letter-spacing:3px;
-
   font-weight:650;
-
-  color:
-    rgba(255,255,255,.78);
+  color:rgba(255,255,255,.78);
 
   text-shadow:
     0 1px 2px
     rgba(0,0,0,.22);
 }
 
-
-/* -----------------------------------------------
-   CARD BOTTOM
------------------------------------------------- */
+/* =====================================================
+CARD BOTTOM
+===================================================== */
 
 .card-bottom{
   position:absolute;
-
   z-index:5;
 
   left:21px;
@@ -435,149 +378,156 @@ button{
   bottom:17px;
 
   display:flex;
-
   align-items:flex-end;
-
   justify-content:space-between;
 }
 
-
-/* -----------------------------------------------
-   VALID THRU
------------------------------------------------- */
-
-.card-valid{
-  margin-right:22px;
-}
-
-.card-valid-label{
-  font-size:6px;
-
-  letter-spacing:.8px;
-
-  opacity:.55;
-}
-
-.card-valid-value{
-  margin-top:2px;
-
-  font-size:9px;
-
-  font-weight:750;
-
-  letter-spacing:.5px;
-}
-
-
-/* -----------------------------------------------
-   CARD HOLDER
------------------------------------------------- */
-
 .card-holder-label{
   font-size:6px;
-
   opacity:.52;
-
   letter-spacing:1px;
 }
 
 .card-holder{
   margin-top:2px;
-
   font-size:10px;
-
   font-weight:800;
-
   letter-spacing:.7px;
-
   text-transform:uppercase;
 }
 
+/* =====================================================
+CARD SYNC STATUS
+===================================================== */
 
-/* -----------------------------------------------
-   CARD COUNT
------------------------------------------------- */
+.card-sync-status{
+  display:flex;
+  align-items:center;
+  gap:5px;
 
-.card-count{
-  position:absolute;
+  min-height:25px;
 
-  right:0;
+  padding:
+    5px 9px;
 
-  bottom:0;
+  border-radius:9px;
+
+  background:
+    rgba(255,255,255,.10);
+
+  border:
+    1px solid
+    rgba(255,255,255,.20);
+
+  color:
+    rgba(255,255,255,.92);
 
   font-size:8px;
+  font-weight:800;
 
-  opacity:.62;
+  letter-spacing:.2px;
 
-  font-weight:700;
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
 
-  letter-spacing:.3px;
+  box-shadow:
+    inset 0 1px 1px
+    rgba(255,255,255,.10),
+
+    0 2px 5px
+    rgba(0,0,0,.12);
+
+  white-space:nowrap;
 }
 
+.card-sync-dot{
+  width:6px;
+  height:6px;
 
-/* -----------------------------------------------
-   NETWORK MARK
------------------------------------------------- */
+  flex:none;
 
-.card-network{
-  position:absolute;
+  border-radius:50%;
 
-  right:21px;
-
-  bottom:14px;
-
-  font-size:10px;
-
-  font-weight:900;
-
-  letter-spacing:-.5px;
-
-  font-style:italic;
-
-  opacity:.9;
+  background:#9aa5a1;
 }
-
-
-/* -----------------------------------------------
-   SMALL MOBILE
------------------------------------------------- */
-
-@media(max-width:360px){
-
-  .total-card{
-    min-height:190px;
-
-    padding:
-      17px 18px;
-  }
-
-  .total-amount{
-    font-size:26px;
-  }
-
-  .card-number{
-    font-size:12px;
-
-    letter-spacing:2.5px;
-  }
-
-  .card-chip{
-    width:39px;
-    height:30px;
-  }
-
-}
-
-
-
 
 /* =====================================================
-   PAGE
+CARD SYNC STATES
+===================================================== */
+
+.card-sync-status.pending{
+  background:
+    rgba(229,163,35,.14);
+
+  border-color:
+    rgba(255,210,100,.25);
+
+  color:
+    #ffe0a0;
+}
+
+.card-sync-status.pending
+.card-sync-dot{
+  background:#e5a323;
+}
+
+.card-sync-status.syncing{
+  background:
+    rgba(61,143,224,.14);
+
+  border-color:
+    rgba(120,190,255,.25);
+
+  color:
+    #cfe8ff;
+}
+
+.card-sync-status.syncing
+.card-sync-dot{
+  background:#63b1f2;
+
+  animation:
+    syncPulse 1s infinite;
+}
+
+.card-sync-status.synced{
+  background:
+    rgba(25,166,107,.15);
+
+  border-color:
+    rgba(100,230,170,.25);
+
+  color:
+    #c9f5df;
+}
+
+.card-sync-status.synced
+.card-sync-dot{
+  background:#35d18d;
+}
+
+.card-sync-status.offline{
+  background:
+    rgba(255,255,255,.08);
+
+  border-color:
+    rgba(255,255,255,.16);
+
+  color:
+    rgba(255,255,255,.70);
+}
+
+.card-sync-status.offline
+.card-sync-dot{
+  background:#9aa5a1;
+}
+
+/* =====================================================
+PAGE
 ===================================================== */
 
 .page{
   display:none;
-
   padding-bottom:18px;
 }
 
@@ -585,58 +535,39 @@ button{
   display:block;
 }
 
-
-/* =====================================================
-   SECTION
-===================================================== */
-
 .section{
   padding:0 15px;
-
   margin-bottom:17px;
 }
 
 .section-title{
   margin-bottom:8px;
-
   font-size:13px;
-
   font-weight:800;
 }
 
-
 /* =====================================================
-   CATEGORY
+CATEGORY
 ===================================================== */
 
 .category-grid{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
+  grid-template-columns:1fr 1fr;
   gap:9px;
 }
 
 .category-card{
   min-height:65px;
-
   padding:9px;
 
   border-radius:16px;
-
   border:1.5px solid #e0e7e4;
-
   background:#fff;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   flex-direction:column;
-
   gap:3px;
 
   transition:.18s;
@@ -648,21 +579,17 @@ button{
 
 .category-icon{
   font-size:20px;
-
   line-height:1;
 }
 
 .category-name{
   font-size:13px;
-
   font-weight:800;
 }
 
 .category-card.selected{
   border-color:#0B6B4F;
-
   background:#eaf6f1;
-
   color:#0B6B4F;
 
   box-shadow:
@@ -670,39 +597,28 @@ button{
     rgba(11,107,79,.11);
 }
 
-
 /* =====================================================
-   PAYMENT
+PAYMENT
 ===================================================== */
 
 .payment-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
+  grid-template-columns:repeat(4,1fr);
   gap:8px;
 }
 
 .payment-card{
   min-height:76px;
-
   padding:8px 4px;
 
   border-radius:15px;
-
   border:1.5px solid #e0e7e4;
-
   background:#fff;
 
   display:flex;
-
   flex-direction:column;
-
   align-items:center;
-
   justify-content:center;
-
   gap:6px;
 
   transition:.18s;
@@ -723,9 +639,7 @@ button{
   border-radius:10px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   overflow:hidden;
@@ -734,7 +648,6 @@ button{
 .payment-icon img{
   width:100%;
   height:100%;
-
   object-fit:contain;
 }
 
@@ -745,14 +658,11 @@ button{
   border-radius:10px;
 
   display:flex;
-
   align-items:center;
   justify-content:center;
 
   font-size:11px;
-
   font-weight:900;
-
   color:#fff;
 }
 
@@ -766,33 +676,29 @@ button{
 
 .payment-name{
   font-size:10px;
-
   font-weight:800;
 }
 
-
 /* =====================================================
-   TRANSACTIONS
+TRANSACTIONS
 ===================================================== */
 
 .filter-grid{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
+  grid-template-columns:1fr 1fr;
   gap:8px;
-
   margin-bottom:10px;
+}
+
+.filter-grid select:last-child{
+  grid-column:1 / -1;
 }
 
 .filter-box{
   width:100%;
 
   border:1px solid #dfe7e3;
-
   background:#fff;
-
   border-radius:13px;
 
   padding:10px;
@@ -800,84 +706,60 @@ button{
   outline:none;
 
   font-size:12px;
-
   color:#17211e;
 }
 
 .summary-grid{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr 1fr;
-
+  grid-template-columns:1fr 1fr 1fr;
   gap:7px;
-
   margin-bottom:13px;
 }
 
 .summary-card{
   background:#fff;
-
   border:1px solid #e3e9e7;
-
   border-radius:14px;
-
   padding:10px 6px;
-
   text-align:center;
 }
 
 .summary-label{
   font-size:9px;
-
   color:#7b8582;
-
   font-weight:750;
 }
 
 .summary-value{
   margin-top:3px;
-
   font-size:12px;
-
   font-weight:850;
 }
 
 .transaction-list{
   display:flex;
-
   flex-direction:column;
-
   gap:8px;
 }
 
 .transaction-card{
   background:#fff;
-
   border:1px solid #e3e9e7;
-
   border-radius:16px;
-
   padding:12px;
 }
 
 .transaction-top{
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
-
   gap:10px;
 }
 
 .transaction-left{
   display:flex;
-
   align-items:center;
-
   gap:9px;
-
   min-width:0;
 }
 
@@ -888,18 +770,14 @@ button{
   border-radius:11px;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   flex:none;
-
   overflow:hidden;
 }
 
-.transaction-payment-icon
-.payment-icon-text{
+.transaction-payment-icon .payment-icon-text{
   width:38px;
   height:38px;
 }
@@ -910,78 +788,76 @@ button{
 
 .transaction-category{
   font-size:12px;
-
   font-weight:800;
 }
 
 .transaction-date{
   margin-top:2px;
-
   color:#8a9491;
-
   font-size:10px;
 }
 
 .transaction-amount{
   white-space:nowrap;
-
   font-size:14px;
-
   font-weight:850;
-
   color:#0B6B4F;
 }
 
 .transaction-note{
   margin-top:8px;
-
   padding-top:7px;
 
   border-top:
     1px solid #eef1f0;
 
   color:#66716d;
-
   font-size:10px;
-
   line-height:1.45;
+}
+
+.transaction-sync{
+  margin-top:6px;
+  font-size:8px;
+  font-weight:750;
+  text-align:right;
+}
+
+.transaction-sync.pending{
+  color:#a06b00;
+}
+
+.transaction-sync.synced{
+  color:#15815a;
 }
 
 .empty{
   padding:35px 15px;
-
   text-align:center;
-
   color:#8a9491;
-
   font-size:13px;
 
   background:#fff;
-
   border-radius:17px;
 
   border:1px dashed #dce5e1;
 }
 
-
 /* =====================================================
-   BOTTOM NAV
+BOTTOM NAV
 ===================================================== */
 
 .bottom-nav{
   position:fixed;
-
   z-index:50;
 
   bottom:0;
-
   left:50%;
 
   transform:
     translateX(-50%);
 
   width:100%;
-
   max-width:520px;
 
   height:70px;
@@ -1011,48 +887,37 @@ button{
 
 .nav-btn{
   border-radius:15px;
-
   background:transparent;
-
   color:#8a9491;
 
   display:flex;
-
   flex-direction:column;
-
   align-items:center;
-
   justify-content:center;
 
   gap:3px;
 
   font-size:10px;
-
   font-weight:750;
 }
 
 .nav-icon{
   font-size:19px;
-
   line-height:1;
 }
 
 .nav-btn.active{
   color:#0B6B4F;
-
   background:#edf7f3;
 }
 
-
 /* =====================================================
-   EXPENSE POPUP
+EXPENSE POPUP
 ===================================================== */
 
 .modal-bg{
   position:fixed;
-
   z-index:100;
-
   inset:0;
 
   background:
@@ -1061,7 +926,6 @@ button{
   display:none;
 
   align-items:flex-end;
-
   justify-content:center;
 }
 
@@ -1071,7 +935,6 @@ button{
 
 .modal{
   width:100%;
-
   max-width:520px;
 
   background:#fff;
@@ -1084,7 +947,6 @@ button{
     calc(18px + env(safe-area-inset-bottom));
 
   max-height:92vh;
-
   overflow:auto;
 
   animation:
@@ -1116,17 +978,13 @@ button{
 
 .modal-title{
   font-size:18px;
-
   font-weight:850;
-
   margin-bottom:13px;
 }
 
 .selected-info{
   display:flex;
-
   align-items:center;
-
   justify-content:space-between;
 
   gap:8px;
@@ -1136,13 +994,11 @@ button{
   border-radius:14px;
 
   background:#edf7f3;
-
   border:1px solid #d6ebe3;
 
   color:#0B6B4F;
 
   font-size:12px;
-
   font-weight:800;
 
   margin-bottom:14px;
@@ -1158,13 +1014,10 @@ button{
 
 .modal-label{
   display:block;
-
   margin-bottom:6px;
 
   font-size:12px;
-
   font-weight:800;
-
   color:#4e5b56;
 }
 
@@ -1172,7 +1025,6 @@ button{
   width:100%;
 
   border:1px solid #e0e7e4;
-
   background:#fff;
 
   border-radius:13px;
@@ -1200,7 +1052,6 @@ button{
   width:100%;
 
   border:1.5px solid #dfe7e3;
-
   background:#fff;
 
   border-radius:15px;
@@ -1212,9 +1063,7 @@ button{
   outline:none;
 
   font-size:23px;
-
   font-weight:850;
-
   color:#17211e;
 }
 
@@ -1230,7 +1079,6 @@ button{
   position:absolute;
 
   right:15px;
-
   top:50%;
 
   transform:
@@ -1239,19 +1087,16 @@ button{
   color:#7a8581;
 
   font-size:12px;
-
   font-weight:850;
 }
 
 .modal-note{
   min-height:70px;
-
   resize:none;
 }
 
 .modal-save{
   width:100%;
-
   min-height:52px;
 
   margin-top:3px;
@@ -1259,11 +1104,9 @@ button{
   border-radius:15px;
 
   background:#0B6B4F;
-
   color:#fff;
 
   font-size:15px;
-
   font-weight:850;
 
   box-shadow:
@@ -1275,9 +1118,8 @@ button{
   transform:scale(.98);
 }
 
-
 /* =====================================================
-   TOAST
+TOAST
 ===================================================== */
 
 .toast{
@@ -1286,7 +1128,6 @@ button{
   z-index:200;
 
   left:50%;
-
   bottom:83px;
 
   transform:
@@ -1294,7 +1135,6 @@ button{
     translateY(15px);
 
   background:#17211e;
-
   color:#fff;
 
   padding:
@@ -1303,7 +1143,6 @@ button{
   border-radius:12px;
 
   font-size:12px;
-
   font-weight:700;
 
   opacity:0;
@@ -1323,9 +1162,8 @@ button{
     translateY(0);
 }
 
-
 /* =====================================================
-   RESPONSIVE
+RESPONSIVE
 ===================================================== */
 
 @media(max-width:360px){
@@ -1343,26 +1181,45 @@ button{
   }
 
   .total-card{
-    min-height:180px;
+    min-height:190px;
   }
 
   .total-amount{
-    font-size:27px;
+    font-size:26px;
+  }
+
+  .card-number{
+    font-size:12px;
+    letter-spacing:2.5px;
+  }
+
+  .card-chip{
+    width:39px;
+    height:30px;
+  }
+
+  .card-sync-status{
+    padding:4px 7px;
+    font-size:7px;
+  }
+
+  .card-sync-dot{
+    width:5px;
+    height:5px;
   }
 
 }
 
 </style>
-</head>
 
+</head>
 
 <body>
 
 <div class="app">
 
-
 <!-- =====================================================
-     HOME
+HOME
 ===================================================== -->
 
 <section
@@ -1370,115 +1227,81 @@ button{
   class="page active"
 >
 
-  <header class="header">
-
-    <div class="header-title">
-      Family Maintenance
-    </div>
-
-    <div class="header-subtitle">
-      পরিবারের খরচের হিসাব
-    </div>
-
-  </header>
-
-
   <!-- =================================================
-       ATM TOTAL CARD
+       ATM CARD
   ================================================== -->
-<div class="total-card-wrap">
 
-  <div class="total-card">
+  <div class="total-card-wrap">
 
+    <div class="total-card">
 
-    <!-- CARD TOP -->
+      <div class="card-top">
 
-    <div class="card-top">
-
-      <div class="card-brand">
-        FAMILY MAINTENANCE
-      </div>
-
-      <div class="card-contactless">
-        ))) 
-      </div>
-
-      <div class="card-chip"></div>
-
-    </div>
-
-
-    <!-- CARD MAIN -->
-
-    <div class="card-middle">
-
-      <div class="total-label">
-        TOTAL EXPENSE
-      </div>
-
-      <div
-        id="totalExpense"
-        class="total-amount"
-      >
-        0 TK
-      </div>
-
-      <div class="card-number">
-        4827&nbsp;&nbsp;••••&nbsp;&nbsp;••••&nbsp;&nbsp;FM01
-      </div>
-
-    </div>
-
-
-    <!-- CARD BOTTOM -->
-
-    <div class="card-bottom">
-
-      <div>
-
-        <div class="card-holder-label">
-          CARD HOLDER
+        <div class="card-brand">
+          FAMILY MAINTENANCE
         </div>
 
-        <div class="card-holder">
-          FAMILY EXPENSE
+        <div class="card-contactless">
+          )))
+        </div>
+
+        <div class="card-chip"></div>
+
+      </div>
+
+      <div class="card-middle">
+
+        <div class="total-label">
+          TOTAL EXPENSE
+        </div>
+
+        <div
+          id="totalExpense"
+          class="total-amount"
+        >
+          0 TK
+        </div>
+
+        <div class="card-number">
+          4827&nbsp;&nbsp;••••&nbsp;&nbsp;••••&nbsp;&nbsp;FM01
         </div>
 
       </div>
 
+      <div class="card-bottom">
 
-      <div class="card-valid">
+        <div>
 
-        <div class="card-valid-label">
-          VALID THRU
+          <div class="card-holder-label">
+            CARD HOLDER
+          </div>
+
+          <div class="card-holder">
+            FAMILY EXPENSE
+          </div>
+
         </div>
 
-        <div class="card-valid-value">
-          09/30
+        <!-- ATM CARD SYNC STATUS -->
+
+        <div
+          id="cardSyncStatus"
+          class="card-sync-status offline"
+        >
+
+          <span class="card-sync-dot"></span>
+
+          <span id="cardSyncStatusText">
+            Offline / Local
+          </span>
+
         </div>
 
-      </div>
-
-
-      <div
-        id="totalCount"
-        class="card-count"
-      >
-        0 Transactions
-      </div>
-
-
-      <div class="card-network">
-        FM
       </div>
 
     </div>
 
   </div>
-
-</div>
-
-
 
   <!-- =================================================
        CATEGORY
@@ -1489,7 +1312,6 @@ button{
     <div class="section-title">
       Category
     </div>
-
 
     <div class="category-grid">
 
@@ -1508,7 +1330,6 @@ button{
         </div>
 
       </button>
-
 
       <button
         type="button"
@@ -1530,7 +1351,6 @@ button{
 
   </div>
 
-
   <!-- =================================================
        PAYMENT
   ================================================== -->
@@ -1541,11 +1361,7 @@ button{
       Payment Method
     </div>
 
-
     <div class="payment-grid">
-
-
-      <!-- BKASH -->
 
       <button
         type="button"
@@ -1568,9 +1384,6 @@ button{
 
       </button>
 
-
-      <!-- NAGAD -->
-
       <button
         type="button"
         class="payment-card"
@@ -1592,9 +1405,6 @@ button{
 
       </button>
 
-
-      <!-- BANK -->
-
       <button
         type="button"
         class="payment-card"
@@ -1603,12 +1413,10 @@ button{
 
         <div class="payment-icon">
 
-          <div
-            class="
-              payment-icon-text
-              bank-placeholder
-            "
-          >
+          <div class="
+            payment-icon-text
+            bank-placeholder
+          ">
             BANK
           </div>
 
@@ -1620,9 +1428,6 @@ button{
 
       </button>
 
-
-      <!-- CASH -->
-
       <button
         type="button"
         class="payment-card"
@@ -1631,12 +1436,10 @@ button{
 
         <div class="payment-icon">
 
-          <div
-            class="
-              payment-icon-text
-              cash-placeholder
-            "
-          >
+          <div class="
+            payment-icon-text
+            cash-placeholder
+          ">
             ৳
           </div>
 
@@ -1648,18 +1451,14 @@ button{
 
       </button>
 
-
     </div>
 
   </div>
 
-
 </section>
 
-
-
 <!-- =====================================================
-     TRANSACTIONS
+TRANSACTIONS
 ===================================================== -->
 
 <section
@@ -1677,11 +1476,24 @@ button{
       সব খরচের হিসাব
     </div>
 
+    <div
+      id="syncStatusTransactions"
+      class="sync-status offline"
+    >
+
+      <span class="sync-dot"></span>
+
+      <span>
+        <span id="syncStatusTextTransactions">
+          Offline / Local
+        </span>
+      </span>
+
+    </div>
+
   </header>
 
-
   <div class="section">
-
 
     <div class="filter-grid">
 
@@ -1695,7 +1507,6 @@ button{
         </option>
 
       </select>
-
 
       <select
         id="categoryFilter"
@@ -1715,7 +1526,6 @@ button{
         </option>
 
       </select>
-
 
       <select
         id="paymentFilter"
@@ -1746,9 +1556,7 @@ button{
 
     </div>
 
-
     <div class="summary-grid">
-
 
       <div class="summary-card">
 
@@ -1765,7 +1573,6 @@ button{
 
       </div>
 
-
       <div class="summary-card">
 
         <div class="summary-label">
@@ -1780,7 +1587,6 @@ button{
         </div>
 
       </div>
-
 
       <div class="summary-card">
 
@@ -1797,9 +1603,7 @@ button{
 
       </div>
 
-
     </div>
-
 
     <div
       id="transactionList"
@@ -1812,10 +1616,8 @@ button{
 
 </div>
 
-
-
 <!-- =====================================================
-     BOTTOM NAV
+BOTTOM NAV
 ===================================================== -->
 
 <nav class="bottom-nav">
@@ -1836,7 +1638,6 @@ button{
 
   </button>
 
-
   <button
     id="transactionsNav"
     class="nav-btn"
@@ -1855,10 +1656,8 @@ button{
 
 </nav>
 
-
-
 <!-- =====================================================
-     EXPENSE POPUP
+EXPENSE POPUP
 ===================================================== -->
 
 <div
@@ -1870,11 +1669,9 @@ button{
 
     <div class="modal-handle"></div>
 
-
     <div class="modal-title">
       Add Expense
     </div>
-
 
     <div class="selected-info">
 
@@ -1892,9 +1689,6 @@ button{
 
     </div>
 
-
-    <!-- DATE -->
-
     <div class="modal-field">
 
       <label
@@ -1911,9 +1705,6 @@ button{
       >
 
     </div>
-
-
-    <!-- AMOUNT -->
 
     <div class="modal-field">
 
@@ -1944,9 +1735,6 @@ button{
 
     </div>
 
-
-    <!-- NOTE -->
-
     <div class="modal-field">
 
       <label
@@ -1964,9 +1752,6 @@ button{
 
     </div>
 
-
-    <!-- SAVE -->
-
     <button
       id="popupSave"
       class="modal-save"
@@ -1975,15 +1760,12 @@ button{
       SAVE EXPENSE
     </button>
 
-
   </div>
 
 </div>
 
-
-
 <!-- =====================================================
-     TOAST
+TOAST
 ===================================================== -->
 
 <div
@@ -1991,156 +1773,268 @@ button{
   class="toast"
 ></div>
 
-
-
 <script>
 
 /* =====================================================
-   STORAGE
+GOOGLE APPS SCRIPT DATABASE
+===================================================== */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbzULRuzDUjOoGearR8hV2pkPPNT2Ogo2G-NUUSKXWr-oExJnMOOtre7JlaZxHf7q2I4/exec";
+
+/* =====================================================
+STORAGE
 ===================================================== */
 
 const STORAGE_KEY =
-  "familyMaintenance_transactions_v2";
+"familyMaintenance_transactions_v2";
 
+const DELETED_KEY =
+"familyMaintenance_deleted_ids_v1";
 
 /* =====================================================
-   STATE
+STATE
 ===================================================== */
 
 let transactions = [];
 
+let deletedIds = new Set();
+
 let selectedCategory =
-  "Family";
+"Family";
 
 let selectedPayment =
-  "";
-
-
-/* =====================================================
-   SCROLL MEMORY
-===================================================== */
+"";
 
 let savedHomeScroll =
-  0;
+0;
 
+let syncRunning =
+false;
+
+let syncTimer =
+null;
+
+let toastTimer;
 
 /* =====================================================
-   DOM
+DOM
 ===================================================== */
 
 const homePage =
-  document.getElementById(
-    "homePage"
-  );
+document.getElementById(
+  "homePage"
+);
 
 const transactionsPage =
-  document.getElementById(
-    "transactionsPage"
-  );
+document.getElementById(
+  "transactionsPage"
+);
 
 const homeNav =
-  document.getElementById(
-    "homeNav"
-  );
+document.getElementById(
+  "homeNav"
+);
 
 const transactionsNav =
-  document.getElementById(
-    "transactionsNav"
-  );
+document.getElementById(
+  "transactionsNav"
+);
 
 const totalExpense =
-  document.getElementById(
-    "totalExpense"
-  );
-
-const totalCount =
-  document.getElementById(
-    "totalCount"
-  );
+document.getElementById(
+  "totalExpense"
+);
 
 const transactionList =
-  document.getElementById(
-    "transactionList"
-  );
+document.getElementById(
+  "transactionList"
+);
 
 const monthFilter =
-  document.getElementById(
-    "monthFilter"
-  );
+document.getElementById(
+  "monthFilter"
+);
 
 const categoryFilter =
-  document.getElementById(
-    "categoryFilter"
-  );
+document.getElementById(
+  "categoryFilter"
+);
 
 const paymentFilter =
-  document.getElementById(
-    "paymentFilter"
-  );
+document.getElementById(
+  "paymentFilter"
+);
 
 const familyTotal =
-  document.getElementById(
-    "familyTotal"
-  );
+document.getElementById(
+  "familyTotal"
+);
 
 const wifeTotal =
-  document.getElementById(
-    "wifeTotal"
-  );
+document.getElementById(
+  "wifeTotal"
+);
 
 const filteredTotal =
-  document.getElementById(
-    "filteredTotal"
-  );
-
+document.getElementById(
+  "filteredTotal"
+);
 
 /* =====================================================
-   POPUP DOM
+POPUP
 ===================================================== */
 
 const expenseModal =
-  document.getElementById(
-    "expenseModal"
-  );
+document.getElementById(
+  "expenseModal"
+);
 
 const popupCategory =
-  document.getElementById(
-    "popupCategory"
-  );
+document.getElementById(
+  "popupCategory"
+);
 
 const popupPayment =
-  document.getElementById(
-    "popupPayment"
-  );
+document.getElementById(
+  "popupPayment"
+);
 
 const popupDate =
-  document.getElementById(
-    "popupDate"
-  );
+document.getElementById(
+  "popupDate"
+);
 
 const popupAmount =
-  document.getElementById(
-    "popupAmount"
-  );
+document.getElementById(
+  "popupAmount"
+);
 
 const popupNote =
-  document.getElementById(
-    "popupNote"
-  );
+document.getElementById(
+  "popupNote"
+);
 
 const popupSave =
-  document.getElementById(
-    "popupSave"
-  );
+document.getElementById(
+  "popupSave"
+);
 
 const toast =
-  document.getElementById(
-    "toast"
-  );
-
+document.getElementById(
+  "toast"
+);
 
 /* =====================================================
-   INIT
+SYNC STATUS DOM
+===================================================== */
+
+/*
+HOME HEADER STATUS REMOVED.
+ATM CARD STATUS IS STILL ACTIVE.
+*/
+
+const syncStatus =
+document.getElementById(
+  "syncStatus"
+);
+
+const syncStatusText =
+document.getElementById(
+  "syncStatusText"
+);
+
+const syncStatusTransactions =
+document.getElementById(
+  "syncStatusTransactions"
+);
+
+const syncStatusTextTransactions =
+document.getElementById(
+  "syncStatusTextTransactions"
+);
+
+const cardSyncStatus =
+document.getElementById(
+  "cardSyncStatus"
+);
+
+const cardSyncStatusText =
+document.getElementById(
+  "cardSyncStatusText"
+);
+
+/* =====================================================
+SET SYNC STATUS
+===================================================== */
+
+function setSyncStatus(
+  state,
+  text
+){
+
+  const elements = [
+    syncStatus,
+    syncStatusTransactions
+  ];
+
+  elements.forEach(
+    element => {
+
+      if(!element){
+        return;
+      }
+
+      element.classList.remove(
+        "pending",
+        "syncing",
+        "synced",
+        "offline"
+      );
+
+      element.classList.add(
+        state
+      );
+
+    }
+  );
+
+  if(syncStatusText){
+    syncStatusText.textContent =
+      text;
+  }
+
+  if(syncStatusTextTransactions){
+    syncStatusTextTransactions.textContent =
+      text;
+  }
+
+  if(cardSyncStatus){
+
+    cardSyncStatus.classList.remove(
+      "pending",
+      "syncing",
+      "synced",
+      "offline"
+    );
+
+    cardSyncStatus.classList.add(
+      state
+    );
+
+  }
+
+  if(cardSyncStatusText){
+
+    cardSyncStatusText.textContent =
+      text;
+
+  }
+
+}
+
+/* =====================================================
+INIT
 ===================================================== */
 
 document.addEventListener(
@@ -2148,10 +2042,13 @@ document.addEventListener(
   init
 );
 
-
 function init(){
 
   loadTransactions();
+
+  loadDeletedIds();
+
+  refreshUI();
 
   setToday();
 
@@ -2165,23 +2062,108 @@ function init(){
 
   setupPopup();
 
-  refreshUI();
+  updateSyncStatusFromLocal();
+
+  setTimeout(
+    syncWithDatabase,
+    400
+  );
+
+  syncTimer =
+    setInterval(
+      syncWithDatabase,
+      10000
+    );
 
 }
 
+/* =====================================================
+ONLINE / OFFLINE
+===================================================== */
+
+window.addEventListener(
+  "online",
+  () => {
+
+    showToast(
+      "Internet Connected"
+    );
+
+    syncWithDatabase();
+
+  }
+);
+
+window.addEventListener(
+  "offline",
+  () => {
+
+    updateSyncStatusFromLocal();
+
+    showToast(
+      "Offline Mode"
+    );
+
+  }
+);
 
 /* =====================================================
-   TODAY
+VISIBILITY
+===================================================== */
+
+document.addEventListener(
+  "visibilitychange",
+  () => {
+
+    if(
+      document.visibilityState ===
+      "visible"
+    ){
+
+      syncWithDatabase();
+
+    }
+
+  }
+);
+
+/* =====================================================
+TODAY
 ===================================================== */
 
 function getToday(){
 
-  return new Date()
-    .toISOString()
-    .split("T")[0];
+  const now =
+    new Date();
+
+  const year =
+    now.getFullYear();
+
+  const month =
+    String(
+      now.getMonth() + 1
+    ).padStart(
+      2,
+      "0"
+    );
+
+  const day =
+    String(
+      now.getDate()
+    ).padStart(
+      2,
+      "0"
+    );
+
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    day
+  );
 
 }
-
 
 function setToday(){
 
@@ -2190,9 +2172,8 @@ function setToday(){
 
 }
 
-
 /* =====================================================
-   LOAD
+LOCAL LOAD
 ===================================================== */
 
 function loadTransactions(){
@@ -2207,14 +2188,22 @@ function loadTransactions(){
     if(saved){
 
       const data =
-        JSON.parse(saved);
+        JSON.parse(
+          saved
+        );
 
       if(
         Array.isArray(data)
       ){
 
         transactions =
-          data;
+          data
+            .map(
+              normalizeLocalTransaction
+            )
+            .filter(
+              item => !!item.id
+            );
 
       }
 
@@ -2223,7 +2212,7 @@ function loadTransactions(){
   }catch(error){
 
     console.error(
-      "Storage load error:",
+      "Local load error:",
       error
     );
 
@@ -2233,25 +2222,193 @@ function loadTransactions(){
 
 }
 
-
 /* =====================================================
-   SAVE STORAGE
+DELETED IDS LOAD
 ===================================================== */
 
-function saveTransactions(){
+function loadDeletedIds(){
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(
-      transactions
-    )
+  try{
+
+    const saved =
+      localStorage.getItem(
+        DELETED_KEY
+      );
+
+    if(saved){
+
+      const data =
+        JSON.parse(
+          saved
+        );
+
+      if(
+        Array.isArray(data)
+      ){
+
+        deletedIds =
+          new Set(
+            data
+              .map(
+                id =>
+                  String(
+                    id || ""
+                  ).trim()
+              )
+              .filter(Boolean)
+          );
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Deleted IDs load error:",
+      error
+    );
+
+    deletedIds =
+      new Set();
+
+  }
+
+}
+
+/* =====================================================
+DELETED IDS SAVE
+===================================================== */
+
+function saveDeletedIds(){
+
+  try{
+
+    localStorage.setItem(
+      DELETED_KEY,
+      JSON.stringify(
+        Array.from(
+          deletedIds
+        )
+      )
+    );
+
+  }catch(error){
+
+    console.error(
+      "Deleted IDs save error:",
+      error
+    );
+
+  }
+
+}
+
+/* =====================================================
+MARK DELETED
+===================================================== */
+
+function markDeleted(
+  id
+){
+
+  const transactionId =
+    String(
+      id || ""
+    ).trim();
+
+  if(!transactionId){
+    return;
+  }
+
+  deletedIds.add(
+    transactionId
   );
 
 }
 
+/* =====================================================
+LOCAL SAVE
+===================================================== */
+
+function saveTransactions(){
+
+  try{
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(
+        transactions
+      )
+    );
+
+  }catch(error){
+
+    console.error(
+      "Local save error:",
+      error
+    );
+
+  }
+
+}
 
 /* =====================================================
-   ID
+NORMALIZE LOCAL
+===================================================== */
+
+function normalizeLocalTransaction(
+  item
+){
+
+  const transaction = {
+
+    id:String(
+      item.id || ""
+    ),
+
+    date:String(
+      item.date || ""
+    ),
+
+    category:String(
+      item.category || ""
+    ),
+
+    payment:String(
+      item.payment || ""
+    ),
+
+    amount:
+      Number(
+        item.amount
+      ) || 0,
+
+    note:String(
+      item.note || ""
+    ),
+
+    createdAt:
+      item.createdAt ||
+      new Date().toISOString(),
+
+    updatedAt:
+      item.updatedAt ||
+      item.createdAt ||
+      new Date().toISOString(),
+
+    syncStatus:
+      item.syncStatus ||
+      "pending"
+
+  };
+
+  return transaction;
+
+}
+
+/* =====================================================
+ID
 ===================================================== */
 
 function createTransactionId(){
@@ -2262,7 +2419,10 @@ function createTransactionId(){
   const random =
     Math.random()
       .toString(36)
-      .substring(2,8)
+      .substring(
+        2,
+        8
+      )
       .toUpperCase();
 
   return (
@@ -2274,9 +2434,8 @@ function createTransactionId(){
 
 }
 
-
 /* =====================================================
-   CATEGORY BUTTONS
+CATEGORY
 ===================================================== */
 
 function setupCategoryButtons(){
@@ -2285,41 +2444,44 @@ function setupCategoryButtons(){
     .querySelectorAll(
       ".category-card"
     )
-    .forEach(button => {
+    .forEach(
+      button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-          document
-            .querySelectorAll(
-              ".category-card"
-            )
-            .forEach(item => {
+            document
+              .querySelectorAll(
+                ".category-card"
+              )
+              .forEach(
+                item => {
 
-              item.classList.remove(
-                "selected"
+                  item.classList.remove(
+                    "selected"
+                  );
+
+                }
               );
 
-            });
+            button.classList.add(
+              "selected"
+            );
 
-          button.classList.add(
-            "selected"
-          );
+            selectedCategory =
+              button.dataset.category;
 
-          selectedCategory =
-            button.dataset.category;
+          }
+        );
 
-        }
-      );
-
-    });
+      }
+    );
 
 }
 
-
 /* =====================================================
-   PAYMENT BUTTONS
+PAYMENT
 ===================================================== */
 
 function setupPaymentButtons(){
@@ -2328,27 +2490,28 @@ function setupPaymentButtons(){
     .querySelectorAll(
       ".payment-card"
     )
-    .forEach(button => {
+    .forEach(
+      button => {
 
-      button.addEventListener(
-        "click",
-        () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-          selectedPayment =
-            button.dataset.payment;
+            selectedPayment =
+              button.dataset.payment;
 
-          openExpensePopup();
+            openExpensePopup();
 
-        }
-      );
+          }
+        );
 
-    });
+      }
+    );
 
 }
 
-
 /* =====================================================
-   OPEN POPUP
+OPEN POPUP
 ===================================================== */
 
 function openExpensePopup(){
@@ -2356,13 +2519,11 @@ function openExpensePopup(){
   savedHomeScroll =
     window.scrollY;
 
-
   popupCategory.textContent =
     selectedCategory;
 
   popupPayment.textContent =
     selectedPayment;
-
 
   popupDate.value =
     getToday();
@@ -2373,16 +2534,9 @@ function openExpensePopup(){
   popupNote.value =
     "";
 
-
   expenseModal.classList.add(
     "show"
   );
-
-
-  /*
-    Give Android a moment to open
-    the keyboard correctly.
-  */
 
   setTimeout(
     () => {
@@ -2397,9 +2551,8 @@ function openExpensePopup(){
 
 }
 
-
 /* =====================================================
-   POPUP SETUP
+POPUP
 ===================================================== */
 
 function setupPopup(){
@@ -2408,11 +2561,6 @@ function setupPopup(){
     "click",
     saveExpense
   );
-
-
-  /*
-    Android keyboard Done button
-  */
 
   popupAmount.addEventListener(
     "keydown",
@@ -2431,15 +2579,9 @@ function setupPopup(){
     }
   );
 
-
   popupNote.addEventListener(
     "keydown",
     event => {
-
-      /*
-        Ctrl/Enter বা keyboard
-        submit style behaviour.
-      */
 
       if(
         event.key === "Enter" &&
@@ -2454,11 +2596,6 @@ function setupPopup(){
 
     }
   );
-
-
-  /*
-    Tap outside popup to close.
-  */
 
   expenseModal.addEventListener(
     "click",
@@ -2478,9 +2615,8 @@ function setupPopup(){
 
 }
 
-
 /* =====================================================
-   POPUP SCROLL / KEYBOARD SUPPORT
+KEYBOARD
 ===================================================== */
 
 function scrollPopupToAmount(){
@@ -2499,13 +2635,6 @@ function scrollPopupToAmount(){
 
 }
 
-
-/*
-  When Android keyboard changes
-  viewport height, keep Save button
-  visible above keyboard.
-*/
-
 if(
   window.visualViewport
 ){
@@ -2522,7 +2651,6 @@ if(
 
 }
 
-
 function keepPopupVisible(){
 
   if(
@@ -2534,7 +2662,6 @@ function keepPopupVisible(){
     return;
 
   }
-
 
   setTimeout(
     () => {
@@ -2550,16 +2677,11 @@ function keepPopupVisible(){
 
 }
 
-
 /* =====================================================
-   CLOSE POPUP
+CLOSE POPUP
 ===================================================== */
 
 function closeExpensePopup(){
-
-  /*
-    Remove keyboard
-  */
 
   if(
     document.activeElement
@@ -2569,15 +2691,9 @@ function closeExpensePopup(){
 
   }
 
-
   expenseModal.classList.remove(
     "show"
   );
-
-
-  /*
-    Restore previous Home position
-  */
 
   setTimeout(
     () => {
@@ -2593,9 +2709,8 @@ function closeExpensePopup(){
 
 }
 
-
 /* =====================================================
-   SAVE EXPENSE
+SAVE EXPENSE
 ===================================================== */
 
 function saveExpense(){
@@ -2612,7 +2727,6 @@ function saveExpense(){
   const note =
     popupNote.value.trim();
 
-
   if(!date){
 
     showToast(
@@ -2624,7 +2738,6 @@ function saveExpense(){
     return;
 
   }
-
 
   if(
     !amount ||
@@ -2641,6 +2754,8 @@ function saveExpense(){
 
   }
 
+  const now =
+    new Date().toISOString();
 
   const transaction = {
 
@@ -2663,60 +2778,41 @@ function saveExpense(){
       note,
 
     createdAt:
-      new Date().toISOString(),
+      now,
 
     updatedAt:
-      new Date().toISOString()
+      now,
+
+    syncStatus:
+      "pending"
 
   };
-
-
-  /*
-    Save locally first
-  */
 
   transactions.unshift(
     transaction
   );
 
-
   saveTransactions();
-
-
-  /*
-    Close popup
-  */
-
-  closeExpensePopup();
-
-
-  /*
-    Update all UI
-  */
 
   refreshUI();
 
+  updateSyncStatusFromLocal();
 
-  /*
-    Small confirmation
-  */
+  closeExpensePopup();
+
+  showToast(
+    "Saved Locally • Pending Sync"
+  );
 
   setTimeout(
-    () => {
-
-      showToast(
-        "Expense Saved ✓"
-      );
-
-    },
-    180
+    syncWithDatabase,
+    200
   );
 
 }
 
-
 /* =====================================================
-   NAVIGATION
+NAVIGATION
 ===================================================== */
 
 function setupNavigation(){
@@ -2732,7 +2828,6 @@ function setupNavigation(){
     }
   );
 
-
   transactionsNav.addEventListener(
     "click",
     () => {
@@ -2746,8 +2841,9 @@ function setupNavigation(){
 
 }
 
-
-function showPage(page){
+function showPage(
+  page
+){
 
   if(
     page === "home"
@@ -2769,9 +2865,7 @@ function showPage(page){
       "active"
     );
 
-  }
-
-  else{
+  }else{
 
     homePage.classList.remove(
       "active"
@@ -2802,9 +2896,8 @@ function showPage(page){
 
 }
 
-
 /* =====================================================
-   FILTER
+FILTER
 ===================================================== */
 
 function setupFilters(){
@@ -2826,9 +2919,8 @@ function setupFilters(){
 
 }
 
-
 /* =====================================================
-   MONTH FILTER
+MONTH FILTER
 ===================================================== */
 
 function populateMonthFilter(){
@@ -2836,20 +2928,24 @@ function populateMonthFilter(){
   const oldValue =
     monthFilter.value;
 
-
   const months =
     [
       ...new Set(
-        transactions.map(
-          transaction =>
-            transaction.date
-              .substring(0,7)
-        )
+        transactions
+          .map(
+            transaction =>
+              String(
+                transaction.date || ""
+              ).substring(
+                0,
+                7
+              )
+          )
+          .filter(Boolean)
       )
     ]
     .sort()
     .reverse();
-
 
   monthFilter.innerHTML =
     `
@@ -2857,7 +2953,6 @@ function populateMonthFilter(){
         সব Month
       </option>
     `;
-
 
   months.forEach(
     month => {
@@ -2882,7 +2977,6 @@ function populateMonthFilter(){
     }
   );
 
-
   if(
     months.includes(
       oldValue
@@ -2892,9 +2986,7 @@ function populateMonthFilter(){
     monthFilter.value =
       oldValue;
 
-  }
-
-  else{
+  }else{
 
     monthFilter.value =
       "all";
@@ -2903,21 +2995,34 @@ function populateMonthFilter(){
 
 }
 
-
 /* =====================================================
-   MONTH FORMAT
+MONTH FORMAT
 ===================================================== */
 
-function formatMonth(month){
+function formatMonth(
+  month
+){
 
   const parts =
     month.split("-");
 
+  if(
+    parts.length < 2
+  ){
+
+    return month;
+
+  }
+
   const year =
-    Number(parts[0]);
+    Number(
+      parts[0]
+    );
 
   const monthNumber =
-    Number(parts[1]);
+    Number(
+      parts[1]
+    );
 
   const date =
     new Date(
@@ -2925,7 +3030,6 @@ function formatMonth(month){
       monthNumber - 1,
       1
     );
-
 
   return date.toLocaleDateString(
     "en-US",
@@ -2937,9 +3041,8 @@ function formatMonth(month){
 
 }
 
-
 /* =====================================================
-   FILTER DATA
+FILTER DATA
 ===================================================== */
 
 function getFilteredTransactions(){
@@ -2953,27 +3056,29 @@ function getFilteredTransactions(){
   const payment =
     paymentFilter.value;
 
-
   return transactions.filter(
     transaction => {
 
+      const date =
+        String(
+          transaction.date || ""
+        );
+
       const monthMatch =
         month === "all" ||
-        transaction.date
-          .startsWith(month);
-
+        date.startsWith(
+          month
+        );
 
       const categoryMatch =
         category === "all" ||
         transaction.category ===
           category;
 
-
       const paymentMatch =
         payment === "all" ||
         transaction.payment ===
           payment;
-
 
       return (
         monthMatch &&
@@ -2986,9 +3091,8 @@ function getFilteredTransactions(){
 
 }
 
-
 /* =====================================================
-   RENDER TRANSACTIONS
+RENDER
 ===================================================== */
 
 function renderTransactions(){
@@ -2996,11 +3100,9 @@ function renderTransactions(){
   const filtered =
     getFilteredTransactions();
 
-
   updateSummary(
     filtered
   );
-
 
   if(
     !filtered.length
@@ -3017,7 +3119,6 @@ function renderTransactions(){
 
   }
 
-
   transactionList.innerHTML =
     filtered
       .map(
@@ -3030,9 +3131,8 @@ function renderTransactions(){
 
 }
 
-
 /* =====================================================
-   PAYMENT DISPLAY
+PAYMENT DISPLAY
 ===================================================== */
 
 function paymentDisplay(
@@ -3057,7 +3157,6 @@ function paymentDisplay(
 
   }
 
-
   if(
     payment === "নগদ"
   ){
@@ -3076,7 +3175,6 @@ function paymentDisplay(
 
   }
 
-
   if(
     payment === "ব্যাংক"
   ){
@@ -3094,7 +3192,6 @@ function paymentDisplay(
 
   }
 
-
   return `
     <div
       class="
@@ -3108,14 +3205,35 @@ function paymentDisplay(
 
 }
 
-
 /* =====================================================
-   TRANSACTION HTML
+TRANSACTION HTML
 ===================================================== */
 
 function transactionHTML(
   transaction
 ){
+
+  const status =
+    transaction.syncStatus ===
+    "synced"
+    ?
+    `
+      <div class="
+        transaction-sync
+        synced
+      ">
+        Synced ✓
+      </div>
+    `
+    :
+    `
+      <div class="
+        transaction-sync
+        pending
+      ">
+        Pending
+      </div>
+    `;
 
   return `
 
@@ -3135,7 +3253,6 @@ function transactionHTML(
 
           </div>
 
-
           <div class="transaction-info">
 
             <div
@@ -3154,7 +3271,6 @@ function transactionHTML(
 
             </div>
 
-
             <div
               class="transaction-date"
             >
@@ -3168,7 +3284,6 @@ function transactionHTML(
           </div>
 
         </div>
-
 
         <div
           class="transaction-amount"
@@ -3184,22 +3299,23 @@ function transactionHTML(
 
       </div>
 
-
       ${
         transaction.note
           ?
-          `
-            <div
-              class="transaction-note"
-            >
-              ${escapeHTML(
-                transaction.note
-              )}
-            </div>
-          `
+            `
+              <div
+                class="transaction-note"
+              >
+                ${escapeHTML(
+                  transaction.note
+                )}
+              </div>
+            `
           :
-          ""
+            ""
       }
+
+      ${status}
 
     </div>
 
@@ -3207,9 +3323,8 @@ function transactionHTML(
 
 }
 
-
 /* =====================================================
-   SUMMARY
+SUMMARY
 ===================================================== */
 
 function updateSummary(
@@ -3222,7 +3337,6 @@ function updateSummary(
 
   let total = 0;
 
-
   list.forEach(
     transaction => {
 
@@ -3231,10 +3345,8 @@ function updateSummary(
           transaction.amount
         ) || 0;
 
-
       total +=
         amount;
-
 
       if(
         transaction.category ===
@@ -3245,7 +3357,6 @@ function updateSummary(
           amount;
 
       }
-
 
       if(
         transaction.category ===
@@ -3260,18 +3371,15 @@ function updateSummary(
     }
   );
 
-
   familyTotal.textContent =
     formatAmount(
       family
     ) + " TK";
 
-
   wifeTotal.textContent =
     formatAmount(
       wife
     ) + " TK";
-
 
   filteredTotal.textContent =
     formatAmount(
@@ -3280,9 +3388,8 @@ function updateSummary(
 
 }
 
-
 /* =====================================================
-   GLOBAL TOTAL
+GLOBAL TOTAL
 ===================================================== */
 
 function updateGlobalTotal(){
@@ -3302,28 +3409,15 @@ function updateGlobalTotal(){
       0
     );
 
-
   totalExpense.textContent =
     formatAmount(
       total
     ) + " TK";
 
-
-  totalCount.textContent =
-    transactions.length +
-    (
-      transactions.length === 1
-        ?
-          " Transaction"
-        :
-          " Transactions"
-    );
-
 }
 
-
 /* =====================================================
-   REFRESH
+REFRESH
 ===================================================== */
 
 function refreshUI(){
@@ -3336,9 +3430,8 @@ function refreshUI(){
 
 }
 
-
 /* =====================================================
-   INDIAN NUMBER FORMAT
+NUMBER FORMAT
 ===================================================== */
 
 function formatAmount(
@@ -3357,9 +3450,8 @@ function formatAmount(
 
 }
 
-
 /* =====================================================
-   DATE FORMAT
+DATE FORMAT
 ===================================================== */
 
 function formatDate(
@@ -3370,10 +3462,25 @@ function formatDate(
     return "";
   }
 
+  const clean =
+    String(
+      date
+    )
+    .substring(
+      0,
+      10
+    );
 
   const parts =
-    date.split("-");
+    clean.split("-");
 
+  if(
+    parts.length !== 3
+  ){
+
+    return clean;
+
+  }
 
   return (
     parts[2] +
@@ -3385,9 +3492,8 @@ function formatDate(
 
 }
 
-
 /* =====================================================
-   ESCAPE HTML
+ESCAPE HTML
 ===================================================== */
 
 function escapeHTML(
@@ -3420,13 +3526,662 @@ function escapeHTML(
 
 }
 
-
 /* =====================================================
-   TOAST
+DATABASE GET - JSONP
 ===================================================== */
 
-let toastTimer;
+function getDatabaseTransactions(){
 
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
+
+      const callbackName =
+        "familyDB_" +
+        Date.now() +
+        "_" +
+        Math.random()
+          .toString(36)
+          .substring(
+            2,
+            7
+          );
+
+      const script =
+        document.createElement(
+          "script"
+        );
+
+      let finished =
+        false;
+
+      const timeout =
+        setTimeout(
+          () => {
+
+            if(finished){
+              return;
+            }
+
+            finished = true;
+
+            cleanup();
+
+            reject(
+              new Error(
+                "Database timeout"
+              )
+            );
+
+          },
+          20000
+        );
+
+      function cleanup(){
+
+        clearTimeout(
+          timeout
+        );
+
+        try{
+
+          delete window[
+            callbackName
+          ];
+
+        }catch(e){}
+
+        script.remove();
+
+      }
+
+      window[
+        callbackName
+      ] =
+        function(result){
+
+          if(finished){
+            return;
+          }
+
+          finished = true;
+
+          cleanup();
+
+          if(
+            result &&
+            result.success &&
+            Array.isArray(
+              result.data
+            )
+          ){
+
+            resolve(
+              result.data
+            );
+
+          }else{
+
+            reject(
+              new Error(
+                "Invalid database response"
+              )
+            );
+
+          }
+
+        };
+
+      script.onerror =
+        function(){
+
+          if(finished){
+            return;
+          }
+
+          finished = true;
+
+          cleanup();
+
+          reject(
+            new Error(
+              "Database connection failed"
+            )
+          );
+
+        };
+
+      script.src =
+        API_URL +
+        "?action=get&callback=" +
+        encodeURIComponent(
+          callbackName
+        );
+
+      document.head.appendChild(
+        script
+      );
+
+    }
+  );
+
+}
+
+/* =====================================================
+DATABASE POST
+===================================================== */
+
+async function postToDatabase(
+  payload
+){
+
+  try{
+
+    await fetch(
+      API_URL,
+      {
+        method:"POST",
+
+        mode:"no-cors",
+
+        headers:{
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+        body:
+          JSON.stringify(
+            payload
+          )
+      }
+    );
+
+    return true;
+
+  }catch(error){
+
+    console.error(
+      "POST error:",
+      error
+    );
+
+    return false;
+
+  }
+
+}
+
+/* =====================================================
+NORMALIZE REMOTE
+===================================================== */
+
+function normalizeRemoteTransaction(
+  item
+){
+
+  let date =
+    item.date || "";
+
+  if(
+    typeof date ===
+    "string" &&
+    date.includes("T")
+  ){
+
+    date =
+      date.substring(
+        0,
+        10
+      );
+
+  }
+
+  return {
+
+    id:String(
+      item.id || ""
+    ),
+
+    date:String(
+      date
+    ),
+
+    category:String(
+      item.category || ""
+    ),
+
+    payment:String(
+      item.payment || ""
+    ),
+
+    amount:
+      Number(
+        item.amount
+      ) || 0,
+
+    note:String(
+      item.note || ""
+    ),
+
+    createdAt:
+      item.createdAt ||
+      new Date().toISOString(),
+
+    updatedAt:
+      item.updatedAt ||
+      item.createdAt ||
+      new Date().toISOString(),
+
+    syncStatus:
+      "synced"
+
+  };
+
+}
+
+/* =====================================================
+REMOTE MAP
+===================================================== */
+
+function makeRemoteMap(
+  remote
+){
+
+  const map =
+    new Map();
+
+  remote.forEach(
+    item => {
+
+      if(!item.id){
+        return;
+      }
+
+      const id =
+        String(
+          item.id
+        );
+
+      if(
+        deletedIds.has(
+          id
+        )
+      ){
+
+        return;
+
+      }
+
+      map.set(
+        id,
+        item
+      );
+
+    }
+  );
+
+  return map;
+
+}
+
+/* =====================================================
+RECONCILE DATABASE
+===================================================== */
+
+function reconcileWithRemote(
+  remote
+){
+
+  const remoteMap =
+    makeRemoteMap(
+      remote
+    );
+
+  const mergedMap =
+    new Map();
+
+  remote.forEach(
+    remoteItem => {
+
+      const id =
+        String(
+          remoteItem.id || ""
+        );
+
+      if(!id){
+        return;
+      }
+
+      if(
+        deletedIds.has(
+          id
+        )
+      ){
+
+        return;
+
+      }
+
+      mergedMap.set(
+        id,
+        {
+          ...remoteItem,
+          syncStatus:"synced"
+        }
+      );
+
+    }
+  );
+
+  transactions.forEach(
+    local => {
+
+      const id =
+        String(
+          local.id || ""
+        );
+
+      if(!id){
+        return;
+      }
+
+      if(
+        deletedIds.has(
+          id
+        )
+      ){
+
+        return;
+
+      }
+
+      if(
+        remoteMap.has(
+          id
+        )
+      ){
+
+        return;
+
+      }
+
+      if(
+        local.syncStatus ===
+        "pending"
+      ){
+
+        mergedMap.set(
+          id,
+          local
+        );
+
+        return;
+
+      }
+
+      markDeleted(
+        id
+      );
+
+    }
+  );
+
+  saveDeletedIds();
+
+  transactions =
+    Array.from(
+      mergedMap.values()
+    );
+
+  transactions.sort(
+    (a,b) => {
+
+      return String(
+        b.createdAt || ""
+      )
+      .localeCompare(
+        String(
+          a.createdAt || ""
+        )
+      );
+
+    }
+  );
+
+  saveTransactions();
+
+}
+
+/* =====================================================
+SEND PENDING TRANSACTIONS
+===================================================== */
+
+async function sendPendingTransactions(){
+
+  const pending =
+    transactions
+      .filter(
+        transaction =>
+          transaction &&
+          transaction.id &&
+          transaction.syncStatus ===
+          "pending" &&
+          !deletedIds.has(
+            String(
+              transaction.id
+            )
+          )
+      )
+      .map(
+        transaction => ({
+          ...transaction
+        })
+      );
+
+  if(
+    !pending.length
+  ){
+
+    return;
+
+  }
+
+  for(
+    const transaction
+    of pending
+  ){
+
+    if(
+      deletedIds.has(
+        String(
+          transaction.id
+        )
+      )
+    ){
+
+      continue;
+
+    }
+
+    const sent =
+      await postToDatabase({
+        action:"add",
+        data:transaction
+      });
+
+    if(!sent){
+
+      continue;
+
+    }
+
+  }
+
+}
+
+/* =====================================================
+SYNC TO DATABASE
+===================================================== */
+
+async function syncWithDatabase(){
+
+  if(syncRunning){
+    return;
+  }
+
+  if(!navigator.onLine){
+
+    updateSyncStatusFromLocal();
+
+    return;
+
+  }
+
+  syncRunning =
+    true;
+
+  setSyncStatus(
+    "syncing",
+    "Syncing..."
+  );
+
+  try{
+
+    const firstRemoteData =
+      await getDatabaseTransactions();
+
+    const firstRemote =
+      firstRemoteData.map(
+        normalizeRemoteTransaction
+      );
+
+    reconcileWithRemote(
+      firstRemote
+    );
+
+    await sendPendingTransactions();
+
+    const confirmedData =
+      await getDatabaseTransactions();
+
+    const confirmedRemote =
+      confirmedData.map(
+        normalizeRemoteTransaction
+      );
+
+    reconcileWithRemote(
+      confirmedRemote
+    );
+
+    refreshUI();
+
+    const pending =
+      transactions.filter(
+        item =>
+          item.syncStatus !==
+          "synced"
+      );
+
+    if(
+      pending.length
+    ){
+
+      setSyncStatus(
+        "pending",
+        "Pending " +
+        pending.length
+      );
+
+    }else{
+
+      setSyncStatus(
+        "synced",
+        "Synced ✓"
+      );
+
+    }
+
+  }catch(error){
+
+    console.error(
+      "Sync error:",
+      error
+    );
+
+    updateSyncStatusFromLocal();
+
+  }finally{
+
+    syncRunning =
+      false;
+
+  }
+
+}
+
+/* =====================================================
+LOCAL SYNC STATUS
+===================================================== */
+
+function updateSyncStatusFromLocal(){
+
+  const pending =
+    transactions.filter(
+      item =>
+        item.syncStatus !==
+        "synced"
+    ).length;
+
+  if(
+    !navigator.onLine
+  ){
+
+    if(pending){
+
+      setSyncStatus(
+        "pending",
+        "Offline • " +
+        pending +
+        " Pending"
+      );
+
+    }else{
+
+      setSyncStatus(
+        "offline",
+        "Offline / Local"
+      );
+
+    }
+
+    return;
+
+  }
+
+  if(pending){
+
+    setSyncStatus(
+      "pending",
+      "Pending " +
+      pending
+    );
+
+  }else{
+
+    setSyncStatus(
+      "synced",
+      "Synced ✓"
+    );
+
+  }
+
+}
+
+/* =====================================================
+TOAST
+===================================================== */
 
 function showToast(
   message
@@ -3436,15 +4191,12 @@ function showToast(
     toastTimer
   );
 
-
   toast.textContent =
     message;
-
 
   toast.classList.add(
     "show"
   );
-
 
   toastTimer =
     setTimeout(
@@ -3463,4 +4215,5 @@ function showToast(
 </script>
 
 </body>
+
 </html>
