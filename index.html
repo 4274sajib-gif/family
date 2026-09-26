@@ -690,10 +690,6 @@ TRANSACTIONS
   margin-bottom:10px;
 }
 
-.filter-grid select:last-child{
-  grid-column:1 / -1;
-}
-
 .filter-box{
   width:100%;
 
@@ -736,100 +732,249 @@ TRANSACTIONS
   font-weight:850;
 }
 
+/* =====================================================
+NEW TRANSACTION CARD
+===================================================== */
+
 .transaction-list{
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:9px;
 }
 
 .transaction-card{
+  position:relative;
+
+  display:flex;
+  align-items:stretch;
+
+  width:100%;
+  min-height:76px;
+
+  padding:8px;
+
   background:#fff;
-  border:1px solid #e3e9e7;
-  border-radius:16px;
-  padding:12px;
+
+  border:
+    1px solid #e0e8e4;
+
+  border-radius:18px;
+
+  box-shadow:
+    0 4px 12px
+    rgba(30,55,45,.045);
+
+  overflow:hidden;
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+}
+
+.transaction-card:active{
+  transform:scale(.992);
+
+  box-shadow:
+    0 2px 7px
+    rgba(30,55,45,.035);
+}
+
+/* =====================================================
+DATE CARD - LEFT
+===================================================== */
+
+.transaction-date-box{
+  flex:none;
+
+  width:62px;
+  min-height:60px;
+
+  padding:7px 5px;
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #edf8f4 0%,
+      #e2f2ec 100%
+    );
+
+  border:
+    1px solid #cfe5dc;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255,255,255,.85);
+
+  position:relative;
+  overflow:hidden;
+}
+
+.transaction-date-box::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+  right:0;
+
+  height:4px;
+
+  background:#0B6B4F;
+}
+
+.transaction-date-day{
+  font-size:18px;
+  line-height:1;
+
+  font-weight:900;
+
+  color:#0B6B4F;
+
+  letter-spacing:-.4px;
+}
+
+.transaction-date-month{
+  margin-top:3px;
+
+  font-size:9px;
+  line-height:1;
+
+  font-weight:850;
+
+  color:#52635d;
+
+  text-transform:uppercase;
+
+  letter-spacing:.7px;
+}
+
+.transaction-date-year{
+  margin-top:3px;
+
+  font-size:8px;
+  line-height:1;
+
+  font-weight:700;
+
+  color:#7b8883;
+}
+
+/* =====================================================
+TRANSACTION CONTENT
+===================================================== */
+
+.transaction-content{
+  flex:1;
+  min-width:0;
+
+  padding:
+    3px 4px
+    3px 9px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 .transaction-top{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:10px;
-}
 
-.transaction-left{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  min-width:0;
-}
+  gap:8px;
 
-.transaction-payment-icon{
-  width:38px;
-  height:38px;
-
-  border-radius:11px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  flex:none;
-  overflow:hidden;
-}
-
-.transaction-payment-icon .payment-icon-text{
-  width:38px;
-  height:38px;
-}
-
-.transaction-info{
   min-width:0;
 }
 
 .transaction-category{
-  font-size:12px;
-  font-weight:800;
-}
+  min-width:0;
 
-.transaction-date{
-  margin-top:2px;
-  color:#8a9491;
-  font-size:10px;
-}
-
-.transaction-amount{
-  white-space:nowrap;
-  font-size:14px;
+  font-size:11px;
   font-weight:850;
-  color:#0B6B4F;
-}
 
-.transaction-note{
-  margin-top:8px;
-  padding-top:7px;
+  color:#26332f;
 
-  border-top:
-    1px solid #eef1f0;
+  white-space:nowrap;
 
-  color:#66716d;
-  font-size:10px;
-  line-height:1.45;
-}
+  overflow:hidden;
+  text-overflow:ellipsis;
 
-.transaction-sync{
-  margin-top:6px;
-  font-size:8px;
-  font-weight:750;
   text-align:right;
 }
 
-.transaction-sync.pending{
-  color:#a06b00;
+.transaction-category-dot{
+  color:#9aa5a1;
+  margin:0 2px;
+}
+.transaction-payment{
+  flex:none;
+  font-size:9px;
+  font-weight:850;
+  color:#0B6B4F;
+  background:#eaf6f1;
+  border:1px solid #c8e5da;
+  border-radius:999px;
+  padding:4px 8px;
+  white-space:nowrap;
+}
+/* =====================================================
+AMOUNT + NOTE
+===================================================== */
+
+.transaction-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:8px;
+
+  min-width:0;
+
+  margin-top:8px;
 }
 
-.transaction-sync.synced{
-  color:#15815a;
+.transaction-amount{
+  flex:none;
+
+  font-size:14px;
+  line-height:1.1;
+
+  font-weight:900;
+
+  color:#0B6B4F;
+
+  white-space:nowrap;
 }
+
+.transaction-note-inline{
+  flex:1;
+  min-width:0;
+
+  text-align:right;
+
+  color:#66716d;
+
+  font-size:10px;
+  line-height:1.3;
+
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+
+  padding-left:6px;
+}
+
+/* =====================================================
+EMPTY
+===================================================== */
 
 .empty{
   padding:35px 15px;
@@ -1208,6 +1353,44 @@ RESPONSIVE
     height:5px;
   }
 
+  .transaction-card{
+    padding:7px;
+    min-height:72px;
+  }
+
+  .transaction-date-box{
+    width:57px;
+    min-height:58px;
+  }
+
+  .transaction-date-day{
+    font-size:17px;
+  }
+
+  .transaction-date-month{
+    font-size:8px;
+  }
+
+  .transaction-date-year{
+    font-size:7px;
+  }
+
+  .transaction-content{
+    padding-left:8px;
+  }
+
+  .transaction-category{
+    font-size:10px;
+  }
+
+  .transaction-amount{
+    font-size:13px;
+  }
+
+  .transaction-note-inline{
+    font-size:9px;
+  }
+
 }
 
 </style>
@@ -1226,10 +1409,6 @@ HOME
   id="homePage"
   class="page active"
 >
-
-  <!-- =================================================
-       ATM CARD
-  ================================================== -->
 
   <div class="total-card-wrap">
 
@@ -1282,8 +1461,6 @@ HOME
 
         </div>
 
-        <!-- ATM CARD SYNC STATUS -->
-
         <div
           id="cardSyncStatus"
           class="card-sync-status offline"
@@ -1302,10 +1479,6 @@ HOME
     </div>
 
   </div>
-
-  <!-- =================================================
-       CATEGORY
-  ================================================== -->
 
   <div class="section">
 
@@ -1350,10 +1523,6 @@ HOME
     </div>
 
   </div>
-
-  <!-- =================================================
-       PAYMENT
-  ================================================== -->
 
   <div class="section">
 
@@ -1466,47 +1635,58 @@ TRANSACTIONS
   class="page"
 >
 
-  <header class="header">
-
-    <div class="header-title">
-      Transactions
-    </div>
-
-    <div class="header-subtitle">
-      সব খরচের হিসাব
-    </div>
-
-    <div
-      id="syncStatusTransactions"
-      class="sync-status offline"
-    >
-
-      <span class="sync-dot"></span>
-
-      <span>
-        <span id="syncStatusTextTransactions">
-          Offline / Local
-        </span>
-      </span>
-
-    </div>
-
-  </header>
-
   <div class="section">
 
+    <div class="summary-grid">
+
+      <div class="summary-card">
+
+        <div class="summary-label">
+          TOTAL
+        </div>
+
+        <div
+          id="filteredTotal"
+          class="summary-value"
+        >
+          0 TK
+        </div>
+
+      </div>
+
+      <div class="summary-card">
+
+        <div class="summary-label">
+          FAMILY
+        </div>
+
+        <div
+          id="familyTotal"
+          class="summary-value"
+        >
+          0 TK
+        </div>
+
+      </div>
+
+      <div class="summary-card">
+
+        <div class="summary-label">
+          WIFE
+        </div>
+
+        <div
+          id="wifeTotal"
+          class="summary-value"
+        >
+          0 TK
+        </div>
+
+      </div>
+
+    </div>
+
     <div class="filter-grid">
-
-      <select
-        id="monthFilter"
-        class="filter-box"
-      >
-
-        <option value="all">
-          সব Month
-        </option>
-
-      </select>
 
       <select
         id="categoryFilter"
@@ -1556,54 +1736,17 @@ TRANSACTIONS
 
     </div>
 
-    <div class="summary-grid">
+    <select
+      id="monthFilter"
+      class="filter-box"
+      style="display:none;"
+    >
 
-      <div class="summary-card">
+      <option value="all">
+        সব Month
+      </option>
 
-        <div class="summary-label">
-          FAMILY
-        </div>
-
-        <div
-          id="familyTotal"
-          class="summary-value"
-        >
-          0 TK
-        </div>
-
-      </div>
-
-      <div class="summary-card">
-
-        <div class="summary-label">
-          WIFE
-        </div>
-
-        <div
-          id="wifeTotal"
-          class="summary-value"
-        >
-          0 TK
-        </div>
-
-      </div>
-
-      <div class="summary-card">
-
-        <div class="summary-label">
-          TOTAL
-        </div>
-
-        <div
-          id="filteredTotal"
-          class="summary-value"
-        >
-          0 TK
-        </div>
-
-      </div>
-
-    </div>
+    </select>
 
     <div
       id="transactionList"
@@ -1928,11 +2071,6 @@ document.getElementById(
 /* =====================================================
 SYNC STATUS DOM
 ===================================================== */
-
-/*
-HOME HEADER STATUS REMOVED.
-ATM CARD STATUS IS STILL ACTIVE.
-*/
 
 const syncStatus =
 document.getElementById(
@@ -3206,6 +3344,79 @@ function paymentDisplay(
 }
 
 /* =====================================================
+TRANSACTION DATE PARTS
+===================================================== */
+
+function getTransactionDateParts(
+  date
+){
+
+  const clean =
+    String(
+      date || ""
+    ).substring(
+      0,
+      10
+    );
+
+  const parts =
+    clean.split("-");
+
+  if(
+    parts.length !== 3
+  ){
+
+    return {
+      day:clean,
+      month:"",
+      year:""
+    };
+
+  }
+
+  const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
+  const monthNumber =
+    Number(
+      parts[1]
+    );
+
+  return {
+
+    day:
+      String(
+        parts[2]
+      ).padStart(
+        2,
+        "0"
+      ),
+
+    month:
+      months[
+        monthNumber - 1
+      ] || parts[1],
+
+    year:
+      parts[0]
+
+  };
+
+}
+
+/* =====================================================
 TRANSACTION HTML
 ===================================================== */
 
@@ -3213,109 +3424,90 @@ function transactionHTML(
   transaction
 ){
 
-  const status =
-    transaction.syncStatus ===
-    "synced"
-    ?
-    `
-      <div class="
-        transaction-sync
-        synced
-      ">
-        Synced ✓
-      </div>
-    `
-    :
-    `
-      <div class="
-        transaction-sync
-        pending
-      ">
-        Pending
-      </div>
-    `;
+  const dateParts =
+    getTransactionDateParts(
+      transaction.date
+    );
 
   return `
 
     <div class="transaction-card">
 
-      <div class="transaction-top">
+      <!-- LEFT DATE CARD -->
 
-        <div class="transaction-left">
+      <div class="transaction-date-box">
 
-          <div
-            class="transaction-payment-icon"
-          >
-
-            ${paymentDisplay(
-              transaction.payment
-            )}
-
-          </div>
-
-          <div class="transaction-info">
-
-            <div
-              class="transaction-category"
-            >
-
-              ${escapeHTML(
-                transaction.category
-              )}
-
-              ·
-
-              ${escapeHTML(
-                transaction.payment
-              )}
-
-            </div>
-
-            <div
-              class="transaction-date"
-            >
-
-              ${formatDate(
-                transaction.date
-              )}
-
-            </div>
-
-          </div>
-
+        <div class="transaction-date-day">
+          ${escapeHTML(
+            dateParts.day
+          )}
         </div>
 
-        <div
-          class="transaction-amount"
-        >
-
-          ${formatAmount(
-            transaction.amount
+        <div class="transaction-date-month">
+          ${escapeHTML(
+            dateParts.month
           )}
+        </div>
 
-          TK
-
+        <div class="transaction-date-year">
+          ${escapeHTML(
+            dateParts.year
+          )}
         </div>
 
       </div>
 
-      ${
-        transaction.note
-          ?
-            `
-              <div
-                class="transaction-note"
-              >
-                ${escapeHTML(
-                  transaction.note
-                )}
-              </div>
-            `
-          :
-            ""
-      }
+      <!-- RIGHT CONTENT -->
 
-      ${status}
+      <div class="transaction-content">
+
+<div class="transaction-top">
+
+  <div
+    class="transaction-category"
+  >
+    ${escapeHTML(
+      transaction.category
+    )}
+  </div>
+
+  <div
+    class="transaction-payment"
+  >
+    ${escapeHTML(
+      transaction.payment
+    )}
+  </div>
+
+</div>
+
+        <div class="transaction-bottom">
+
+          <div class="transaction-amount">
+            ${formatAmount(
+              transaction.amount
+            )} TK
+          </div>
+
+          ${
+            transaction.note
+              ?
+                `
+                  <div
+                    class="transaction-note-inline"
+                  >
+                    ${escapeHTML(
+                      transaction.note
+                    )}
+                  </div>
+                `
+              :
+                ""
+          }
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -3371,6 +3563,11 @@ function updateSummary(
     }
   );
 
+  filteredTotal.textContent =
+    formatAmount(
+      total
+    ) + " TK";
+
   familyTotal.textContent =
     formatAmount(
       family
@@ -3379,11 +3576,6 @@ function updateSummary(
   wifeTotal.textContent =
     formatAmount(
       wife
-    ) + " TK";
-
-  filteredTotal.textContent =
-    formatAmount(
-      total
     ) + " TK";
 
 }
@@ -3482,12 +3674,49 @@ function formatDate(
 
   }
 
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+
+  const year =
+    Number(
+      parts[0]
+    );
+
+  const monthNumber =
+    Number(
+      parts[1]
+    );
+
+  const day =
+    String(
+      parts[2]
+    ).padStart(
+      2,
+      "0"
+    );
+
   return (
-    parts[2] +
-    "/" +
-    parts[1] +
-    "/" +
-    parts[0]
+    day +
+    "-" +
+    (
+      months[
+        monthNumber - 1
+      ] || parts[1]
+    ) +
+    "-" +
+    year
   );
 
 }
