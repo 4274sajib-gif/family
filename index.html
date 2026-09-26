@@ -25,7 +25,7 @@ button{border:0;cursor:pointer}
 .sync-status.offline .sync-dot{background:#9aa5a1}
 @keyframes syncPulse{50%{opacity:.35}}
 
-.total-card-wrap{padding:12px 15px 20px}
+.total-card-wrap{padding:18px 15px 20px}
 .total-card{position:relative;width:100%;aspect-ratio:1.586 / 1;min-height:205px;padding:20px 21px;border-radius:20px;overflow:hidden;color:#fff;background:linear-gradient(135deg,#0d7658 0%,#0B6B4F 38%,#07553f 72%,#043d2e 100%);border:1px solid rgba(255,255,255,.20);box-shadow:0 18px 35px rgba(0,45,32,.28),0 5px 10px rgba(0,0,0,.10);isolation:isolate}
 .total-card::before{content:"";position:absolute;inset:-30%;z-index:-1;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.20),transparent 25%),radial-gradient(circle at 90% 90%,rgba(0,0,0,.18),transparent 35%);transform:rotate(-8deg)}
 .total-card::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.16;background:repeating-linear-gradient(125deg,transparent 0,transparent 12px,rgba(255,255,255,.16) 13px,transparent 14px)}
@@ -40,7 +40,7 @@ button{border:0;cursor:pointer}
 .total-amount{margin-top:3px;font-size:29px;line-height:1.05;font-weight:900;letter-spacing:-.8px;text-shadow:0 2px 4px rgba(0,0,0,.22)}
 .card-number{margin-top:11px;font-size:14px;letter-spacing:3px;font-weight:650;color:rgba(255,255,255,.78);text-shadow:0 1px 2px rgba(0,0,0,.22)}
 .card-bottom{position:absolute;z-index:5;left:21px;right:21px;bottom:17px;display:flex;align-items:flex-end;justify-content:space-between}
-.card-holder-label{font-size:6px;opacity:.52;letter-spacing:1px}
+.card-holder-label{font-size:6.5px;opacity:.78;letter-spacing:1px;font-weight:750}
 .card-holder{margin-top:2px;font-size:10px;font-weight:800;letter-spacing:.7px;text-transform:uppercase}
 .card-sync-status{display:flex;align-items:center;gap:5px;min-height:25px;padding:5px 9px;border-radius:9px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);color:rgba(255,255,255,.92);font-size:8px;font-weight:800;letter-spacing:.2px;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);box-shadow:inset 0 1px 1px rgba(255,255,255,.10),0 2px 5px rgba(0,0,0,.12);white-space:nowrap}
 .card-sync-dot{width:6px;height:6px;flex:none;border-radius:50%;background:#9aa5a1}
@@ -77,7 +77,7 @@ button{border:0;cursor:pointer}
 .filter-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
 .filter-box{width:100%;border:1px solid #dfe7e3;background:#fff;border-radius:13px;padding:10px;outline:none;font-size:12px;color:#17211e}
 .summary-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:13px}
-.summary-card{background:#fff;border:1px solid #e3e9e7;border-radius:14px;padding:10px 6px;text-align:center;margin-top:12px}
+.summary-card{background:#fff;border:1px solid #e3e9e7;border-radius:14px;padding:10px 6px;text-align:center;margin-top:18px}
 .summary-label{font-size:9px;color:#7b8582;font-weight:750}
 .summary-value{margin-top:3px;font-size:12px;font-weight:850}
 
@@ -100,7 +100,20 @@ button{border:0;cursor:pointer}
 .transaction-payment{flex:none;font-size:9px;font-weight:850;color:#0B6B4F;background:linear-gradient(145deg,#f1faf5 0%,#e4f3eb 100%);border:1px solid #c8e3d5;border-radius:999px;padding:4px 8px;white-space:nowrap;box-shadow:0 2px 3px rgba(11,107,79,.055),inset 0 1px 0 rgba(255,255,255,.95);text-shadow:0 1px 0 rgba(255,255,255,.75)}
 .transaction-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;margin-top:8px}
 .transaction-amount{flex:none;font-size:14px;line-height:1.1;font-weight:900;color:#0B6B4F;white-space:nowrap;text-shadow:0 1px 0 rgba(255,255,255,.9)}
-.transaction-note-inline{flex:1;min-width:0;text-align:right;color:#66716d;font-size:10px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:6px}
+.transaction-note-inline{
+flex:1;
+min-width:0;
+text-align:right;
+color:#3f4b47;
+font-size:10.5px;
+font-weight:650;
+line-height:1.35;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+padding-left:6px;
+text-shadow:0 1px 0 rgba(255,255,255,.75)
+}
 
 .empty{padding:35px 15px;text-align:center;color:#8a9491;font-size:13px;background:#fff;border-radius:17px;border:1px dashed #dce5e1}
 
@@ -182,12 +195,12 @@ text-shadow:none;
 <div class="card-middle">
 <div class="total-label">TOTAL EXPENSE</div>
 <div id="totalExpense" class="total-amount">0 TK</div>
-<div class="card-number">4827&nbsp;&nbsp;••••&nbsp;&nbsp;••••&nbsp;&nbsp;FM01</div>
+<div id="cardMonth" class="card-number">••••&nbsp;&nbsp;••••&nbsp;&nbsp;September 2026</div>
 </div>
 <div class="card-bottom">
 <div>
 <div class="card-holder-label">CARD HOLDER</div>
-<div class="card-holder">FAMILY EXPENSE</div>
+<div class="card-holder">SAJIB HOSSAIN</div>
 </div>
 <div id="cardSyncStatus" class="card-sync-status offline">
 <span class="card-sync-dot"></span>
@@ -223,11 +236,11 @@ text-shadow:none;
 <div class="payment-name">নগদ</div>
 </button>
 <button type="button" class="payment-card" data-payment="ব্যাংক">
-<div class="payment-icon"><div class="payment-icon-text bank-placeholder">BANK</div></div>
+<div class="payment-icon"><img src="bank-logo.svg" alt="Bank"></div>
 <div class="payment-name">ব্যাংক</div>
 </button>
 <button type="button" class="payment-card" data-payment="ক্যাশ">
-<div class="payment-icon"><div class="payment-icon-text cash-placeholder">৳</div></div>
+<div class="payment-icon"><img src="cash-logo.svg" alt="Cash"></div>
 <div class="payment-name">ক্যাশ</div>
 </button>
 </div>
@@ -385,6 +398,7 @@ loadTransactions();
 loadDeletedIds();
 refreshUI();
 setToday();
+updateCardMonth();
 setupCategoryButtons();
 setupPaymentButtons();
 setupNavigation();
@@ -419,6 +433,21 @@ return year+"-"+month+"-"+day;
 
 function setToday(){popupDate.value=getToday()}
 
+function updateCardMonth(){
+const cardMonth=document.getElementById("cardMonth");
+if(!cardMonth)return;
+
+const now=new Date();
+
+const month=now.toLocaleDateString("en-US",{
+month:"long"
+});
+
+const year=now.getFullYear();
+
+cardMonth.innerHTML=`••••&nbsp;&nbsp;••••&nbsp;&nbsp;${month} ${year}`;
+}
+  
 function loadTransactions(){
 try{
 const saved=localStorage.getItem(STORAGE_KEY);
