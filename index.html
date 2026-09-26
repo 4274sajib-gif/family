@@ -718,6 +718,7 @@ TRANSACTIONS
   border-radius:14px;
   padding:10px 6px;
   text-align:center;
+  margin-top:12px;
 }
 
 .summary-label{
@@ -753,22 +754,40 @@ NEW TRANSACTION CARD
 
   padding:8px;
 
-  background:#fff;
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #f8fcfa 100%
+    );
 
-  border:
-    1px solid #e0e8e4;
+  border:1px solid #d8e6e0;
 
   border-radius:18px;
 
   box-shadow:
-    0 4px 12px
-    rgba(30,55,45,.045);
+    0 2px 3px rgba(20,55,43,.06),
+    0 7px 14px rgba(20,55,43,.07),
+    0 14px 22px rgba(20,55,43,.035),
+    inset 0 1px 0 rgba(255,255,255,.95);
 
   overflow:hidden;
+
+  transform:translateY(0);
 
   transition:
     transform .15s ease,
     box-shadow .15s ease;
+}
+
+.transaction-card:active{
+  transform:
+    translateY(1px)
+    scale(.995);
+
+  box-shadow:
+    0 2px 5px rgba(20,55,43,.06),
+    0 5px 10px rgba(20,55,43,.05);
 }
 
 .transaction-card:active{
@@ -786,22 +805,21 @@ DATE CARD - LEFT
 .transaction-date-box{
   flex:none;
 
-  width:62px;
-  min-height:60px;
+  width:68px;
+  min-height:62px;
 
   padding:7px 5px;
 
-  border-radius:13px;
+  border-radius:16px;
 
   background:
     linear-gradient(
       145deg,
-      #edf8f4 0%,
-      #e2f2ec 100%
+      #f4faf7 0%,
+      #e4f3ed 100%
     );
 
-  border:
-    1px solid #cfe5dc;
+  border:1px solid #cfe4dc;
 
   display:flex;
   flex-direction:column;
@@ -809,8 +827,8 @@ DATE CARD - LEFT
   justify-content:center;
 
   box-shadow:
-    inset 0 1px 0
-    rgba(255,255,255,.85);
+    0 3px 8px rgba(11,107,79,.08),
+    inset 0 1px 0 rgba(255,255,255,.9);
 
   position:relative;
   overflow:hidden;
@@ -827,44 +845,49 @@ DATE CARD - LEFT
 
   height:4px;
 
-  background:#0B6B4F;
+  background:
+    linear-gradient(
+      90deg,
+      #0B6B4F,
+      #15966f
+    );
+
+  border-radius:
+    16px 16px 0 0;
 }
 
 .transaction-date-day{
-  font-size:18px;
+  font-size:21px;
   line-height:1;
-
-  font-weight:900;
-
+  font-weight:950;
   color:#0B6B4F;
-
-  letter-spacing:-.4px;
+  letter-spacing:-.5px;
 }
 
 .transaction-date-month{
-  margin-top:3px;
+  margin-top:4px;
 
   font-size:9px;
   line-height:1;
 
   font-weight:850;
 
-  color:#52635d;
+  color:#34433e;
 
-  text-transform:uppercase;
-
-  letter-spacing:.7px;
+  letter-spacing:.2px;
 }
 
 .transaction-date-year{
   margin-top:3px;
 
-  font-size:8px;
+  font-size:9px;
   line-height:1;
 
-  font-weight:700;
+  font-weight:800;
 
-  color:#7b8883;
+  color:#8a9792;
+
+  letter-spacing:.5px;
 }
 
 /* =====================================================
@@ -1306,6 +1329,223 @@ TOAST
     translateX(-50%)
     translateY(0);
 }
+.wife-date-box{
+  background:
+    linear-gradient(
+      145deg,
+      #fff5f5 0%,
+      #fde8e8 100%
+    );
+
+  border-color:#f2cccc;
+
+  box-shadow:
+    0 3px 8px rgba(220,70,70,.08),
+    inset 0 1px 0 rgba(255,255,255,.9);
+}
+.wife-date-box::before{
+  background:
+    linear-gradient(
+      90deg,
+      #e57373,
+      #ef9a9a
+    );
+}
+.wife-date-box .transaction-date-day{
+  color:#d95c5c;
+  }
+
+  
+/* =====================================================
+PREMIUM 3D TRANSACTION CARD
+===================================================== */
+
+.transaction-card{
+  position:relative;
+  isolation:isolate;
+
+  display:flex;
+  align-items:stretch;
+
+  width:100%;
+  min-height:76px;
+
+  padding:8px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #f9fcfa 45%,
+      #edf5f1 100%
+    );
+
+  border:1px solid #d4e3dc;
+  border-radius:18px;
+
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.98) inset,
+    0 -1px 0 rgba(11,75,52,.04) inset,
+    0 2px 3px rgba(18,55,40,.07),
+    0 6px 10px rgba(18,55,40,.07),
+    0 12px 20px rgba(18,55,40,.055),
+    0 18px 28px rgba(18,55,40,.025);
+
+  overflow:hidden;
+
+  transform:translateY(0);
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease;
+}
+
+/* কার্ডের উপরের আলো */
+
+.transaction-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+
+  border-radius:inherit;
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.72) 0%,
+      rgba(255,255,255,.18) 24%,
+      transparent 48%,
+      rgba(11,107,79,.025) 100%
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 1px 0 0 rgba(255,255,255,.35);
+}
+
+/* কনটেন্ট কার্ডের উপরে থাকবে */
+
+.transaction-date-box,
+.transaction-content{
+  position:relative;
+  z-index:1;
+}
+
+/* চাপ দিলে নরম 3D ইফেক্ট */
+
+.transaction-card:active{
+  transform:translateY(1px) scale(.995);
+
+  box-shadow:
+    0 1px 2px rgba(18,55,40,.07),
+    0 3px 7px rgba(18,55,40,.06),
+    inset 0 2px 4px rgba(18,55,40,.035);
+
+  border-color:#c9ddd3;
+}
+
+/* =====================================================
+3D DATE TILE
+===================================================== */
+
+.transaction-date-box{
+  background:
+    linear-gradient(
+      145deg,
+      #f4faf7 0%,
+      #dcefe7 100%
+    );
+
+  border-color:#c9e0d5;
+
+  box-shadow:
+    0 3px 0 #b9d8cc,
+    0 5px 8px rgba(11,107,79,.22),
+    0 8px 14px rgba(11,107,79,.14),
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 0 -1px 0 rgba(11,107,79,.12);
+}
+
+/* তারিখের লেখায় হালকা গভীরতা */
+
+.transaction-date-day{
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.85),
+    0 1px 2px rgba(11,107,79,.12);
+}
+
+/* =====================================================
+WIFE DATE TILE - 3D
+===================================================== */
+
+.wife-date-box {
+  background: linear-gradient(145deg, #fff1f1, #ffdada);
+
+  box-shadow:
+    0 3px 0 #e8aaaa,
+    0 5px 8px rgba(210, 55, 55, .22),
+    0 8px 14px rgba(210, 55, 55, .14),
+    inset 0 1px 0 rgba(255, 255, 255, .98),
+    inset 0 -1px 0 rgba(210, 75, 75, .12);
+
+  border-color: #e9b0b0;
+}
+
+.wife-date-box .transaction-date-day {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, .85),
+    0 1px 2px rgba(190, 45, 45, .12);
+}
+
+/* =====================================================
+3D PAYMENT BADGE
+===================================================== */
+
+.transaction-payment{
+  background:
+    linear-gradient(
+      145deg,
+      #f1faf5 0%,
+      #e4f3eb 100%
+    );
+
+  border-color:#c8e3d5;
+
+  box-shadow:
+    0 2px 3px rgba(11,107,79,.055),
+    inset 0 1px 0 rgba(255,255,255,.95);
+
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.75);
+}
+
+/* =====================================================
+AMOUNT DEPTH
+===================================================== */
+
+.transaction-amount{
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.9);
+}
+
+/* =====================================================
+SMALL SCREEN - KEEP ORIGINAL HEIGHT
+===================================================== */
+
+@media(max-width:360px){
+
+  .transaction-card{
+    box-shadow:
+      0 1px 2px rgba(18,55,40,.07),
+      0 5px 9px rgba(18,55,40,.065),
+      0 10px 16px rgba(18,55,40,.04),
+      inset 0 1px 0 rgba(255,255,255,.95);
+  }
+
+}
 
 /* =====================================================
 RESPONSIVE
@@ -1393,6 +1633,27 @@ RESPONSIVE
 
 }
 
+/* WIFE TRANSACTION CARD — SOFT RED THEME */
+.transaction-card.wife-transaction-card{
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #fff9f9 45%,
+      #f9eeee 100%
+    );
+
+  border-color:#ead4d4;
+
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.98) inset,
+    0 -1px 0 rgba(120,35,35,.04) inset,
+    0 2px 3px rgba(120,35,35,.07),
+    0 6px 10px rgba(120,35,35,.07),
+    0 12px 20px rgba(120,35,35,.055),
+    0 18px 28px rgba(120,35,35,.025);
+}
+  
 </style>
 
 </head>
@@ -3431,11 +3692,19 @@ function transactionHTML(
 
   return `
 
-    <div class="transaction-card">
+    <div class="transaction-card ${
+  transaction.category === "Wife"
+    ? "wife-transaction-card"
+    : ""
+}">
 
       <!-- LEFT DATE CARD -->
 
-      <div class="transaction-date-box">
+     <div class="transaction-date-box ${
+  transaction.category === "Wife"
+    ? "wife-date-box"
+    : ""
+}">
 
         <div class="transaction-date-day">
           ${escapeHTML(
